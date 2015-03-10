@@ -1,0 +1,33 @@
+{
+	"name": "elementareteilchen/viewhelpers",
+	"description": "TYPO3 Flow ViewHelpers from elementare teilchen GmbH",
+	"type": "typo3-flow-package",
+	"keywords": [
+		"TYPO3 Flow",
+		"ViewHelper"
+	],
+	"homepage": "https://github.com/ElementareTeilchen/ViewHelpers",
+	"license": "GPL-3.0+",
+	"authors": [
+		{
+			"name": "Raffael Comi",
+			"email": "Github@DiComo.de",
+			"homepage": "http://www.DiComo.de",
+			"role": "Developer"
+		}
+	],
+	"support": {
+		"email": "Raffael.Comi@elementare-teilchen.de",
+		"issues": "https://github.com/ElementareTeilchen/ViewHelpers/issues",
+		"wiki": "https://github.com/ElementareTeilchen/ViewHelpers/wiki",
+		"source": "https://github.com/ElementareTeilchen/ViewHelpers"
+	},
+	"require": {
+		"typo3/flow": "2.3.1"
+	},
+	"autoload": {
+		"psr-0": {
+			"ElementareTeilchen\\ViewHelpers\\": "Classes"
+		}
+	}
+}
