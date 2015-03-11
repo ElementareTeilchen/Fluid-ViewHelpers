@@ -1,5 +1,5 @@
 <?php
-namespace ElementareTeilchen\ViewHelpers\ViewHelpers\Link;
+namespace ElementareTeilchen\ViewHelpers\Link;
 
 /*																					*
  * This script belongs to the TYPO3 Flow package "ElementareTeilchen.ViewHelpers".	*
