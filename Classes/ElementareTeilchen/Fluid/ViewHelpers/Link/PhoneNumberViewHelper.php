@@ -1,8 +1,8 @@
 <?php
-namespace ElementareTeilchen\ViewHelpers\Link;
+namespace ElementareTeilchen\Fluid\ViewHelpers\Link;
 
 /*																					*
- * This script belongs to the TYPO3 Flow package "ElementareTeilchen.ViewHelpers".	*
+ * This script belongs to the TYPO3 Flow package "ElementareTeilchen.Fluid".	*
  *																					*/
 
 use TYPO3\Fluid\Core\ViewHelper\AbstractTagBasedViewHelper;
