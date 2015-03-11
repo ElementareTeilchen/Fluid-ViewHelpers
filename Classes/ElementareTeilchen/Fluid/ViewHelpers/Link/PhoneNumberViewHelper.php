@@ -14,7 +14,7 @@ use TYPO3\Fluid\Core\ViewHelper\AbstractTagBasedViewHelper;
  * Defaults to the country calling code of Germany (+49).
  *
  * Usage:
- * {et:link.phoneNumber(number: '1234', text: 'call me')}
+ * <et:link.phoneNumber phoneNumber='1234'>call me</et:link.phoneNumber>
  *
  * Output:
  * <a href='tel:+491234'>call me</a>
@@ -31,21 +31,21 @@ class PhoneNumberViewHelper extends AbstractTagBasedViewHelper {
         $strippedNumber = preg_replace('/.*(?=\+)/', '', $strippedNumber);
         $strippedNumber = preg_replace('/^00/', '+', $strippedNumber);
 
-        if(strpos($strippedNumber,'+') === false) {
-            if(strpos($strippedNumber,'0') === 0){
-                $strippedNumber = substr($strippedNumber,1);
+        if(strpos($strippedNumber, '+') === FALSE) {
+            if(strpos($strippedNumber, '0') === 0){
+                $strippedNumber = substr($strippedNumber, 1);
             }
             $internationalNumber = '+49' . $strippedNumber;
         } else {
-            if(strpos($strippedNumber,'0') === 3){
-                $internationalNumber = substr($strippedNumber,0,3) . substr($strippedNumber,4);
+            if(strpos($strippedNumber, '0') === 3){
+                $internationalNumber = substr($strippedNumber, 0,3) . substr($strippedNumber, 4);
             } else {
                 $internationalNumber = $strippedNumber;
             }
         }
 
         $this->tag->setTagName('a');
-        $this->tag->addAttribute('href','tel:' . $internationalNumber);
+        $this->tag->addAttribute('href', 'tel:' . $internationalNumber);
         $this->tag->setContent($this->renderChildren());
 
 		return $this->tag->render();
