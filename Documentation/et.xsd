@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://typo3.org/ns/ElementareTeilchen/Fluid/ViewHelpers"><xsd:element name="link.phoneNumber"><xsd:annotation><xsd:documentation><![CDATA[PhoneNumberViewHelper
+
+Converts a given phone number to the correctly linked HTML tag.
+Defaults to the country calling code of Germany (+49).
+
+Usage:
+{et:link.phoneNumber(number: '1234', text: 'call me')}
+
+Output:
+<a href='tel:+491234'>call me</a>]]></xsd:documentation></xsd:annotation><xsd:complexType mixed="true"><xsd:sequence><xsd:any minOccurs="0" maxOccurs="unbounded"/></xsd:sequence><xsd:attribute type="xsd:string" name="additionalAttributes"><xsd:annotation><xsd:documentation><![CDATA[Additional tag attributes. They will be added directly to the resulting HTML tag.]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="data"><xsd:annotation><xsd:documentation><![CDATA[Additional data-* attributes. They will each be added with a "data-" prefix.]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="phoneNumber" use="required"><xsd:annotation><xsd:documentation><![CDATA[The phone number to link]]></xsd:documentation></xsd:annotation></xsd:attribute></xsd:complexType></xsd:element></xsd:schema>
