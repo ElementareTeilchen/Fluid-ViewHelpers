@@ -1,7 +1,7 @@
 {
 	"name": "elementareteilchen/fluid",
 	"description": "TYPO3 Fluid ViewHelpers from elementare teilchen GmbH",
-	"type": "typo3-flow-package",
+	"type": "typo3-flow-plugin",
 	"keywords": [
 		"TYPO3 Flow",
 		"TYPO3 Fluid",

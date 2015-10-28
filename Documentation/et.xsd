@@ -8,4 +8,16 @@ Usage:
 {et:link.phoneNumber(number: '1234', text: 'call me')}
 
 Output:
-<a href='tel:+491234'>call me</a>]]></xsd:documentation></xsd:annotation><xsd:complexType mixed="true"><xsd:sequence><xsd:any minOccurs="0" maxOccurs="unbounded"/></xsd:sequence><xsd:attribute type="xsd:string" name="additionalAttributes"><xsd:annotation><xsd:documentation><![CDATA[Additional tag attributes. They will be added directly to the resulting HTML tag.]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="data"><xsd:annotation><xsd:documentation><![CDATA[Additional data-* attributes. They will each be added with a "data-" prefix.]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="phoneNumber" use="required"><xsd:annotation><xsd:documentation><![CDATA[The phone number to link]]></xsd:documentation></xsd:annotation></xsd:attribute></xsd:complexType></xsd:element></xsd:schema>
+<a href='tel:+491234'>call me</a>]]></xsd:documentation></xsd:annotation><xsd:complexType mixed="true"><xsd:sequence><xsd:any minOccurs="0" maxOccurs="unbounded"/></xsd:sequence><xsd:attribute type="xsd:string" name="additionalAttributes"><xsd:annotation><xsd:documentation><![CDATA[Additional tag attributes. They will be added directly to the resulting HTML tag.]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="data"><xsd:annotation><xsd:documentation><![CDATA[Additional data-* attributes. They will each be added with a "data-" prefix.]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="phoneNumber" use="required"><xsd:annotation><xsd:documentation><![CDATA[The phone number to link]]></xsd:documentation></xsd:annotation></xsd:attribute></xsd:complexType></xsd:element><xsd:element name="viewHelpers.parse"><xsd:annotation><xsd:documentation><![CDATA[This view helper parses the given Fluid string.
+
+= Example =
+== Inline ==
+#Input
+{et:parse(string:'text containing a {variable} variable')}
+#Output
+text containing a value variable
+== Tag ==
+#Input
+<et:parse>text containing a {variable} variable</et:parse>
+#Output
+text containing a value variable]]></xsd:documentation></xsd:annotation><xsd:complexType mixed="true"><xsd:sequence><xsd:any minOccurs="0" maxOccurs="unbounded"/></xsd:sequence><xsd:attribute type="xsd:string" name="string"><xsd:annotation><xsd:documentation><![CDATA[string to parse]]></xsd:documentation></xsd:annotation></xsd:attribute></xsd:complexType></xsd:element></xsd:schema>
