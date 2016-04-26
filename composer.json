@@ -24,7 +24,7 @@
 		"source": "https://github.com/ElementareTeilchen/Fluid"
 	},
 	"require": {
-		"typo3/fluid": "2.3.*"
+		"typo3/fluid": "*"
 	},
 	"autoload": {
 		"psr-0": {
