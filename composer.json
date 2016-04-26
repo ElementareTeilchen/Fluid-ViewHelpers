@@ -1,34 +1,33 @@
 {
-	"name": "elementareteilchen/fluid",
-	"description": "TYPO3 Fluid ViewHelpers from elementare teilchen GmbH",
-	"type": "typo3-flow-plugin",
-	"keywords": [
-		"TYPO3 Flow",
-		"TYPO3 Fluid",
-		"ViewHelper"
-	],
-	"homepage": "https://github.com/ElementareTeilchen/Fluid",
-	"license": "GPL-3.0+",
-	"authors": [
-		{
-			"name": "Raffael Comi",
-			"email": "Github@DiComo.de",
-			"homepage": "http://www.DiComo.de",
-			"role": "Developer"
-		}
-	],
-	"support": {
-		"email": "Raffael.Comi@elementare-teilchen.de",
-		"issues": "https://github.com/ElementareTeilchen/Fluid/issues",
-		"wiki": "https://github.com/ElementareTeilchen/Fluid/wiki",
-		"source": "https://github.com/ElementareTeilchen/Fluid"
-	},
-	"require": {
-		"typo3/fluid": "*"
-	},
-	"autoload": {
-		"psr-0": {
-			"ElementareTeilchen\\Fluid": "Classes"
-		}
-	}
+  "name": "elementareteilchen/fluid",
+  "description": "TYPO3 Fluid ViewHelpers from elementare teilchen GmbH",
+  "type": "typo3-flow-plugin",
+  "keywords": [
+    "TYPO3 Flow",
+    "TYPO3 Fluid",
+    "ViewHelper"
+  ],
+  "homepage": "https://github.com/ElementareTeilchen/Fluid",
+  "license": "GPL-3.0+",
+  "authors": [
+    {
+      "name": "Raffael Comi",
+      "email": "Raffael.Comi@elementare-teilchen.de",
+      "role": "Developer"
+    }
+  ],
+  "support": {
+    "email": "Raffael.Comi@elementare-teilchen.de",
+    "issues": "https://github.com/ElementareTeilchen/Fluid/issues",
+    "wiki": "https://github.com/ElementareTeilchen/Fluid/wiki",
+    "source": "https://github.com/ElementareTeilchen/Fluid"
+  },
+  "require": {
+    "typo3/fluid": "*"
+  },
+  "autoload": {
+    "psr-0": {
+      "ElementareTeilchen\\Fluid": "Classes"
+    }
+  }
 }
