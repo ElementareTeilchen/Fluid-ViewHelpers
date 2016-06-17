@@ -4,20 +4,66 @@
 Converts a given phone number to the correctly linked HTML tag.
 Defaults to the country calling code of Germany (+49).
 
-Usage:
-{et:link.phoneNumber(number: '1234', text: 'call me')}
+= Examples =
 
-Output:
-<a href='tel:+491234'>call me</a>]]></xsd:documentation></xsd:annotation><xsd:complexType mixed="true"><xsd:sequence><xsd:any minOccurs="0" maxOccurs="unbounded"/></xsd:sequence><xsd:attribute type="xsd:string" name="additionalAttributes"><xsd:annotation><xsd:documentation><![CDATA[Additional tag attributes. They will be added directly to the resulting HTML tag.]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="data"><xsd:annotation><xsd:documentation><![CDATA[Additional data-* attributes. They will each be added with a "data-" prefix.]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="phoneNumber" use="required"><xsd:annotation><xsd:documentation><![CDATA[The phone number to link]]></xsd:documentation></xsd:annotation></xsd:attribute></xsd:complexType></xsd:element><xsd:element name="viewHelpers.parse"><xsd:annotation><xsd:documentation><![CDATA[This view helper parses the given Fluid string.
+<code title="Tag">
+<et:link.phoneNumber phoneNumber='1234' countryCode='49'>call me</et:link.phoneNumber>
+</code>
+or
+<code title="Inline">
+{et:link.phoneNumber(phoneNumber:'1234', countryCode:'49', content:'call me')}
+</code>
 
-= Example =
-== Inline ==
-#Input
+<output>
+<a href='tel:+491234'>call me</a>
+</output>]]></xsd:documentation></xsd:annotation><xsd:complexType mixed="true"><xsd:sequence><xsd:any minOccurs="0" maxOccurs="unbounded"/></xsd:sequence><xsd:attribute type="xsd:string" name="additionalAttributes"><xsd:annotation><xsd:documentation><![CDATA[Additional tag attributes. They will be added directly to the resulting HTML tag.]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="data"><xsd:annotation><xsd:documentation><![CDATA[Additional data-* attributes. They will each be added with a "data-" prefix.]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="class"><xsd:annotation><xsd:documentation><![CDATA[CSS class(es) for this element]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="dir"><xsd:annotation><xsd:documentation><![CDATA[Text direction for this HTML element. Allowed strings: "ltr" (left to right), "rtl" (right to left)]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="id"><xsd:annotation><xsd:documentation><![CDATA[Unique (in this file) identifier for this HTML element.]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="lang"><xsd:annotation><xsd:documentation><![CDATA[Language for this element. Use short names specified in RFC 1766]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="style"><xsd:annotation><xsd:documentation><![CDATA[Individual CSS styles for this element]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="title"><xsd:annotation><xsd:documentation><![CDATA[Tooltip text of element]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="accesskey"><xsd:annotation><xsd:documentation><![CDATA[Keyboard shortcut to access this element]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="tabindex"><xsd:annotation><xsd:documentation><![CDATA[Specifies the tab order of this element]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="onclick"><xsd:annotation><xsd:documentation><![CDATA[JavaScript evaluated for the onclick event]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="phoneNumber" use="required"><xsd:annotation><xsd:documentation><![CDATA[The phone number to link]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="countryCode"><xsd:annotation><xsd:documentation><![CDATA[The country calling code to use (defaults to "49")]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="content"><xsd:annotation><xsd:documentation><![CDATA[The content of the resulting tag]]></xsd:documentation></xsd:annotation></xsd:attribute></xsd:complexType></xsd:element><xsd:element name="parse"><xsd:annotation><xsd:documentation><![CDATA[This view helper parses the given Fluid string.
+
+= Examples =
+
+<code title="Inline">
 {et:parse(string:'text containing a {variable} variable')}
-#Output
+</code>
+<output>
 text containing a value variable
-== Tag ==
-#Input
+</output>
+
+<code title="Tag">
 <et:parse>text containing a {variable} variable</et:parse>
-#Output
-text containing a value variable]]></xsd:documentation></xsd:annotation><xsd:complexType mixed="true"><xsd:sequence><xsd:any minOccurs="0" maxOccurs="unbounded"/></xsd:sequence><xsd:attribute type="xsd:string" name="string"><xsd:annotation><xsd:documentation><![CDATA[string to parse]]></xsd:documentation></xsd:annotation></xsd:attribute></xsd:complexType></xsd:element></xsd:schema>
+</code>
+<output>
+text containing a value variable
+</output>]]></xsd:documentation></xsd:annotation><xsd:complexType mixed="true"><xsd:sequence><xsd:any minOccurs="0" maxOccurs="unbounded"/></xsd:sequence><xsd:attribute type="xsd:string" name="string"><xsd:annotation><xsd:documentation><![CDATA[String to parse.]]></xsd:documentation></xsd:annotation></xsd:attribute></xsd:complexType></xsd:element><xsd:element name="uri.resource"><xsd:annotation><xsd:documentation><![CDATA[A view helper for creating URIs to resources appending ``?md5=Md5OfResource`.
+
+= Examples =
+
+<code title="Defaults">
+<link href="{et:uri.resource(path: 'CSS/Stylesheet.css')}" rel="stylesheet" />
+</code>
+<output>
+<link href="http://yourdomain.tld/_Resources/Static/YourPackage/CSS/Stylesheet.css?md5=Md5OfResource" rel="stylesheet" />
+(depending on current package)
+</output>
+
+<code title="Other package resource">
+{et:uri.resource(path: 'gfx/SomeImage.png', package: 'DifferentPackage')}
+</code>
+<output>
+http://yourdomain.tld/_Resources/Static/DifferentPackage/gfx/SomeImage.png?md5=Md5OfResource
+(depending on domain)
+</output>
+
+<code title="Resource URI">
+{et:uri.resource(path: 'resource://DifferentPackage/Public/gfx/SomeImage.png')}
+</code>
+<output>
+http://yourdomain.tld/_Resources/Static/DifferentPackage/gfx/SomeImage.png?md5=Md5OfResource
+(depending on domain)
+</output>
+
+<code title="Resource object">
+<img src="{et:uri.resource(resource: myImage.resource)}" />
+</code>
+<output>
+<img src="http://yourdomain.tld/_Resources/Persistent/69e73da3ce0ad08c717b7b9f1c759182d6650944.jpg?md5=Md5OfResource" />
+(depending on your resource object)
+</output>]]></xsd:documentation></xsd:annotation><xsd:complexType mixed="true"><xsd:sequence><xsd:any minOccurs="0" maxOccurs="unbounded"/></xsd:sequence><xsd:attribute type="xsd:string" name="path"><xsd:annotation><xsd:documentation><![CDATA[The location of the resource, can be either a path relative to the Public resource directory of the package or a resource://... URI]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="package"><xsd:annotation><xsd:documentation><![CDATA[Target package key. If not set, the current package key will be used]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="resource"><xsd:annotation><xsd:documentation><![CDATA[If specified, this resource object is used instead of the path and package information]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="localize"><xsd:annotation><xsd:documentation><![CDATA[Whether resource localization should be attempted or not]]></xsd:documentation></xsd:annotation></xsd:attribute></xsd:complexType></xsd:element></xsd:schema>

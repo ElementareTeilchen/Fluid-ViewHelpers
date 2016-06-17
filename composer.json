@@ -1,13 +1,13 @@
 {
-  "name": "elementareteilchen/fluid",
-  "description": "TYPO3 Fluid ViewHelpers from elementare teilchen GmbH",
+  "name": "elementareteilchen/fluid-viewhelpers",
+  "description": "(Typo3) Fluid ViewHelpers from elementare teilchen GmbH",
   "type": "typo3-flow-plugin",
   "keywords": [
     "TYPO3 Flow",
     "TYPO3 Fluid",
     "ViewHelper"
   ],
-  "homepage": "https://github.com/ElementareTeilchen/Fluid",
+  "homepage": "https://github.com/ElementareTeilchen/Fluid-ViewHelpers",
   "license": "GPL-3.0+",
   "authors": [
     {
@@ -18,16 +18,16 @@
   ],
   "support": {
     "email": "Raffael.Comi@elementare-teilchen.de",
-    "issues": "https://github.com/ElementareTeilchen/Fluid/issues",
-    "wiki": "https://github.com/ElementareTeilchen/Fluid/wiki",
-    "source": "https://github.com/ElementareTeilchen/Fluid"
+    "issues": "https://github.com/ElementareTeilchen/Fluid-ViewHelpers/issues",
+    "wiki": "https://github.com/ElementareTeilchen/Fluid-ViewHelpers/wiki",
+    "source": "https://github.com/ElementareTeilchen/Fluid-ViewHelpers"
   },
   "require": {
     "typo3/fluid": "*"
   },
   "autoload": {
-    "psr-0": {
-      "ElementareTeilchen\\Fluid": "Classes"
+    "psr-4": {
+      "ElementareTeilchen\\Fluid\\ViewHelpers\\": "Classes"
     }
   }
 }
