@@ -23,7 +23,8 @@
     "source": "https://github.com/ElementareTeilchen/Fluid-ViewHelpers"
   },
   "require": {
-    "typo3/fluid": "*"
+    "typo3/fluid": "^2||^3",
+    "typo3/media": "^2.1"
   },
   "autoload": {
     "psr-4": {
