@@ -76,10 +76,11 @@ class ImageViewHelper extends MediaImageViewHelper
      * @param boolean $async Return asynchronous image URI in case the requested image does not exist already
      * @param string $preset Preset used to determine image configuration
      * @param array $srcsetWidths The width of the images referenced in the srcset attribute
+     * @param string $srcsetAttribute This string is prepended to the srcset attribute
      *
      * @return string an <img...> html tag
      */
-    public function render(ImageInterface $image = null, $width = null, $maximumWidth = null, $height = null, $maximumHeight = null, $allowCropping = false, $allowUpScaling = false, $async = false, $preset = null, $srcsetWidths = [])
+    public function render(ImageInterface $image = null, $width = null, $maximumWidth = null, $height = null, $maximumHeight = null, $allowCropping = false, $allowUpScaling = false, $async = false, $preset = null, $srcsetWidths = [], $srcsetAttribute = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw== 1w, ')
     {
         parent::render($image, $width, $maximumWidth, $height, $maximumHeight, $allowCropping, $allowUpScaling, $async, $preset);
 
@@ -88,7 +89,6 @@ class ImageViewHelper extends MediaImageViewHelper
             $image = $this->arguments['asset'];
         }
 
-        $srcsetAttribute = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw== 1w, ';
         $widthsInSrcset = [];
         foreach (array_merge($this->settings['widths'], $srcsetWidths, [$image->getWidth()]) as $srcsetWidth) {
             if ($srcsetWidth <= $image->getWidth() && !in_array($srcsetWidth, $widthsInSrcset)) {
