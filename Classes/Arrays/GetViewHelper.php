@@ -27,11 +27,13 @@ use TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper;
  * bar
  * </output>
  */
-class GetViewHelper extends AbstractViewHelper {
+class GetViewHelper extends AbstractViewHelper
+{
     /**
      * Initializes the arguments
      */
-    public function __construct() {
+    public function __construct()
+    {
         $this->registerArgument('array', 'array', 'Array to access.', true);
         $this->registerArgument('key', 'string', 'Key where the array should be accessed.', true);
     }
@@ -39,7 +41,8 @@ class GetViewHelper extends AbstractViewHelper {
     /**
      * @return mixed Value at $array[$key]
      */
-    public function render() {
+    public function render()
+    {
         if (empty($this->arguments['array'])) {
             return '';
         } else {

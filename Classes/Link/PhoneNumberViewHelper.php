@@ -23,12 +23,13 @@ use TYPO3\Fluid\Core\ViewHelper\AbstractTagBasedViewHelper;
  * <a href='tel:+491234'>call me</a>
  * </output>
  */
-class PhoneNumberViewHelper extends AbstractTagBasedViewHelper {
-
+class PhoneNumberViewHelper extends AbstractTagBasedViewHelper
+{
     /**
      * Initializes the "string" argument
      */
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
         $this->registerUniversalTagAttributes();
         $this->registerArgument('phoneNumber', 'string', 'The phone number to link', true);
@@ -39,7 +40,8 @@ class PhoneNumberViewHelper extends AbstractTagBasedViewHelper {
     /**
      * @return string The linked phone number
      */
-    public function render() {
+    public function render()
+    {
         // strip everything but numbers and "+"
         $strippedNumber = preg_replace('/[^\d\+]/', '', $this->arguments['phoneNumber']);
         // strip every "+" not at the beginning
@@ -55,16 +57,16 @@ class PhoneNumberViewHelper extends AbstractTagBasedViewHelper {
          * +49 (0) 123 / 456 789
          */
 
-        if(strpos($strippedNumber, '+') === FALSE) {
+        if (strpos($strippedNumber, '+') === false) {
             // no country calling code
-            if(strpos($strippedNumber, '0') === 0){
+            if (strpos($strippedNumber, '0') === 0) {
                 // remove leading "0"
                 $strippedNumber = substr($strippedNumber, 1);
             }
             $internationalNumber = '+' . $this->arguments['countryCode'] . $strippedNumber;
         } else {
             // country calling code already present
-            if(strpos($strippedNumber, '0') === 3){
+            if (strpos($strippedNumber, '0') === 3) {
                 // somehow the leading "0" for national numbers got mixed in
                 $internationalNumber = substr($strippedNumber, 0, 3) . substr($strippedNumber, 4);
             } else {

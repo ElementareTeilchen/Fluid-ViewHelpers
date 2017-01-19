@@ -54,13 +54,16 @@ class ResourceViewHelper extends FluidUriResourceViewHelper
      * @param Resource $resource If specified, this resource object is used instead of the path and package information
      * @param boolean $localize Whether resource localization should be attempted or not
      *
-     * @return string The absolute URI to the resource appending `?md5=Md5OfResource`
+     * @return string The absolute URI to the resource appended with `?md5=Md5OfResource`
+     *
      * @throws InvalidVariableException
+     *
      * @api
      */
     public function render($path = null, $package = null, Resource $resource = null, $localize = true)
     {
         $resourceUri = parent::render($path, $package, $resource, $localize);
+
         return $resourceUri . '?md5=' . md5_file($resourceUri);
     }
 }

@@ -91,7 +91,7 @@ class ImageViewHelper extends MediaImageViewHelper
 
         $widthsInSrcset = [];
         foreach (array_merge($this->settings['widths'], $srcsetWidths, [$image->getWidth()]) as $srcsetWidth) {
-            if ($srcsetWidth <= $image->getWidth() && !in_array($srcsetWidth, $widthsInSrcset)) {
+            if ($srcsetWidth <= $image->getWidth() && !in_array($srcsetWidth, $widthsInSrcset, true)) {
                 $srcsetHeight = null;
                 $srcsetMaxHeight = null;
                 if ($allowCropping) {
