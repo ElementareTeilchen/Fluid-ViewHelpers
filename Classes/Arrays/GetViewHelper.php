@@ -1,8 +1,8 @@
 <?php
 namespace ElementareTeilchen\Fluid\ViewHelpers\Arrays;
 
-use TYPO3\Flow\Annotations as Flow;
-use TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper;
+use Neos\Flow\Annotations as Flow;
+use Neos\FluidAdaptor\Core\ViewHelper\AbstractViewHelper;
 
 /**
  * This view helper gets the value of the given array at the given key

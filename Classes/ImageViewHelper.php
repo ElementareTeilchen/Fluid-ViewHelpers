@@ -1,13 +1,13 @@
 <?php
 namespace ElementareTeilchen\Fluid\ViewHelpers;
 
-use TYPO3\Flow\Annotations as Flow;
-use TYPO3\Media\Domain\Model\ImageInterface;
-use TYPO3\Media\Domain\Model\ThumbnailConfiguration;
-use TYPO3\Media\ViewHelpers\ImageViewHelper as MediaImageViewHelper;
+use Neos\Flow\Annotations as Flow;
+use Neos\Media\Domain\Model\ImageInterface;
+use Neos\Media\Domain\Model\ThumbnailConfiguration;
+use Neos\Media\ViewHelpers\ImageViewHelper as MediaImageViewHelper;
 
 /**
- * Renders an <img> HTML tag from a given TYPO3.Media's image instance
+ * Renders an <img> HTML tag from a given Neos.Media image instance
  *
  * = Examples =
  *
@@ -83,11 +83,6 @@ class ImageViewHelper extends MediaImageViewHelper
     public function render(ImageInterface $image = null, $width = null, $maximumWidth = null, $height = null, $maximumHeight = null, $allowCropping = false, $allowUpScaling = false, $async = false, $preset = null, $srcsetWidths = [], $srcsetAttribute = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw== 1w, ')
     {
         parent::render($image, $width, $maximumWidth, $height, $maximumHeight, $allowCropping, $allowUpScaling, $async, $preset);
-
-        // care for deprecated "asset" argument
-        if ($image === null && $this->hasArgument('asset')) {
-            $image = $this->arguments['asset'];
-        }
 
         $widthsInSrcset = [];
         foreach (array_merge($this->settings['widths'], $srcsetWidths, [$image->getWidth()]) as $srcsetWidth) {

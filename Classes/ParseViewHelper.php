@@ -1,8 +1,9 @@
 <?php
 namespace ElementareTeilchen\Fluid\ViewHelpers;
 
-use TYPO3\Flow\Annotations as Flow;
-use TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper;
+use Neos\Flow\Annotations as Flow;
+use Neos\FluidAdaptor\Core\Parser\TemplateParser;
+use Neos\FluidAdaptor\Core\ViewHelper\AbstractViewHelper;
 
 /**
  * This view helper parses the given Fluid string.
@@ -26,7 +27,7 @@ use TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper;
 class ParseViewHelper extends AbstractViewHelper
 {
     /**
-     * @var \TYPO3\Fluid\Core\Parser\TemplateParser
+     * @var TemplateParser
      * @Flow\Inject
      */
     protected $templateParser;
