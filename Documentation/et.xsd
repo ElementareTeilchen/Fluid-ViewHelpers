@@ -19,52 +19,7 @@ bar
 </code>
 <output>
 bar
-</output>]]></xsd:documentation></xsd:annotation><xsd:complexType mixed="true"><xsd:sequence><xsd:any minOccurs="0" maxOccurs="unbounded"/></xsd:sequence><xsd:attribute type="xsd:string" name="array" use="required"><xsd:annotation><xsd:documentation><![CDATA[Array to access.]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="key" use="required"><xsd:annotation><xsd:documentation><![CDATA[Key where the array should be accessed.]]></xsd:documentation></xsd:annotation></xsd:attribute></xsd:complexType></xsd:element><xsd:element name="image"><xsd:annotation><xsd:documentation><![CDATA[Renders an <img> HTML tag from a given TYPO3.Media's image instance
-
-= Examples =
-
-<code title="Rendering an image as-is">
-<et:image image="{imageObject}" alt="a sample image without scaling" />
-</code>
-<output>
-(depending on the image, no scaling applied)
-<img src="_Resources/Persistent/b29[...]95d.jpeg" width="120" height="180" alt="a sample image without scaling" />
-</output>
-
-
-<code title="Rendering an image with scaling at a given width only">
-<et:image image="{imageObject}" maximumWidth="80" alt="sample" />
-</code>
-<output>
-(depending on the image; scaled down to a maximum width of 80 pixels, keeping the aspect ratio)
-<img src="_Resources/Persistent/b29[...]95d.jpeg" width="80" height="120" alt="sample" />
-</output>
-
-
-<code title="Rendering an image with scaling at given width and height, keeping aspect ratio">
-<et:image image="{imageObject}" maximumWidth="80" maximumHeight="80" alt="sample" />
-</code>
-<output>
-(depending on the image; scaled down to a maximum width and height of 80 pixels, keeping the aspect ratio)
-<img src="_Resources/Persistent/b29[...]95d.jpeg" width="53" height="80" alt="sample" />
-</output>
-
-
-<code title="Rendering an image with crop-scaling at given width and height">
-<et:image image="{imageObject}" maximumWidth="80" maximumHeight="80" allowCropping="true" alt="sample" />
-</code>
-<output>
-(depending on the image; scaled down to a width and height of 80 pixels, possibly changing aspect ratio)
-<img src="_Resources/Persistent/b29[...]95d.jpeg" width="80" height="80" alt="sample" />
-</output>
-
-<code title="Rendering an image with allowed up-scaling at given width and height">
-<et:image image="{imageObject}" maximumWidth="5000" allowUpScaling="true" alt="sample" />
-</code>
-<output>
-(depending on the image; scaled up or down to a width 5000 pixels, keeping aspect ratio)
-<img src="_Resources/Persistent/b29[...]95d.jpeg" width="80" height="80" alt="sample" />
-</output>]]></xsd:documentation></xsd:annotation><xsd:complexType mixed="true"><xsd:sequence><xsd:any minOccurs="0" maxOccurs="unbounded"/></xsd:sequence><xsd:attribute type="xsd:string" name="additionalAttributes"><xsd:annotation><xsd:documentation><![CDATA[Additional tag attributes. They will be added directly to the resulting HTML tag.]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="data"><xsd:annotation><xsd:documentation><![CDATA[Additional data-* attributes. They will each be added with a "data-" prefix.]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="image"><xsd:annotation><xsd:documentation><![CDATA[The image to be rendered as an image]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="width"><xsd:annotation><xsd:documentation><![CDATA[Desired width of the image]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="maximumWidth"><xsd:annotation><xsd:documentation><![CDATA[Desired maximum width of the image]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="height"><xsd:annotation><xsd:documentation><![CDATA[Desired height of the image]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="maximumHeight"><xsd:annotation><xsd:documentation><![CDATA[Desired maximum height of the image]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="allowCropping"><xsd:annotation><xsd:documentation><![CDATA[Whether the image should be cropped if the given sizes would hurt the aspect ratio]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="allowUpScaling"><xsd:annotation><xsd:documentation><![CDATA[Whether the resulting image size might exceed the size of the original image]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="async"><xsd:annotation><xsd:documentation><![CDATA[Return asynchronous image URI in case the requested image does not exist already]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="preset"><xsd:annotation><xsd:documentation><![CDATA[Preset used to determine image configuration]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="srcsetWidths"><xsd:annotation><xsd:documentation><![CDATA[The width of the images referenced in the srcset attribute]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="srcsetAttribute"><xsd:annotation><xsd:documentation><![CDATA[This string is prepended to the srcset attribute]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="class"><xsd:annotation><xsd:documentation><![CDATA[CSS class(es) for this element]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="dir"><xsd:annotation><xsd:documentation><![CDATA[Text direction for this HTML element. Allowed strings: "ltr" (left to right), "rtl" (right to left)]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="id"><xsd:annotation><xsd:documentation><![CDATA[Unique (in this file) identifier for this HTML element.]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="lang"><xsd:annotation><xsd:documentation><![CDATA[Language for this element. Use short names specified in RFC 1766]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="style"><xsd:annotation><xsd:documentation><![CDATA[Individual CSS styles for this element]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="title"><xsd:annotation><xsd:documentation><![CDATA[Tooltip text of element]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="accesskey"><xsd:annotation><xsd:documentation><![CDATA[Keyboard shortcut to access this element]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="tabindex"><xsd:annotation><xsd:documentation><![CDATA[Specifies the tab order of this element]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="onclick"><xsd:annotation><xsd:documentation><![CDATA[JavaScript evaluated for the onclick event]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="alt" use="required"><xsd:annotation><xsd:documentation><![CDATA[Specifies an alternate text for an image]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="ismap"><xsd:annotation><xsd:documentation><![CDATA[Specifies an image as a server-side image-map. Rarely used. Look at usemap instead]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="usemap"><xsd:annotation><xsd:documentation><![CDATA[Specifies an image as a client-side image-map]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="asset"><xsd:annotation><xsd:documentation><![CDATA[The asset to be rendered - DEPRECATED, use the "image" argument instead]]></xsd:documentation></xsd:annotation></xsd:attribute></xsd:complexType></xsd:element><xsd:element name="link.phoneNumber"><xsd:annotation><xsd:documentation><![CDATA[PhoneNumberViewHelper
+</output>]]></xsd:documentation></xsd:annotation><xsd:complexType mixed="true"><xsd:sequence><xsd:any minOccurs="0" maxOccurs="unbounded"/></xsd:sequence><xsd:attribute type="xsd:string" name="array" use="required"><xsd:annotation><xsd:documentation><![CDATA[Array to access.]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="key" use="required"><xsd:annotation><xsd:documentation><![CDATA[Key where the array should be accessed.]]></xsd:documentation></xsd:annotation></xsd:attribute></xsd:complexType></xsd:element><xsd:element name="link.phoneNumber"><xsd:annotation><xsd:documentation><![CDATA[PhoneNumberViewHelper
 
 Converts a given phone number to the correctly linked HTML tag.
 Defaults to the country calling code of Germany (+49).
