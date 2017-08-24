@@ -19,7 +19,16 @@ bar
 </code>
 <output>
 bar
-</output>]]></xsd:documentation></xsd:annotation><xsd:complexType mixed="true"><xsd:sequence><xsd:any minOccurs="0" maxOccurs="unbounded"/></xsd:sequence><xsd:attribute type="xsd:string" name="array" use="required"><xsd:annotation><xsd:documentation><![CDATA[Array to access.]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="key" use="required"><xsd:annotation><xsd:documentation><![CDATA[Key where the array should be accessed.]]></xsd:documentation></xsd:annotation></xsd:attribute></xsd:complexType></xsd:element><xsd:element name="link.phoneNumber"><xsd:annotation><xsd:documentation><![CDATA[PhoneNumberViewHelper
+</output>]]></xsd:documentation></xsd:annotation><xsd:complexType mixed="true"><xsd:sequence><xsd:any minOccurs="0" maxOccurs="unbounded"/></xsd:sequence><xsd:attribute type="xsd:string" name="array" use="required"><xsd:annotation><xsd:documentation><![CDATA[Array to access.]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="key" use="required"><xsd:annotation><xsd:documentation><![CDATA[Key where the array should be accessed.]]></xsd:documentation></xsd:annotation></xsd:attribute></xsd:complexType></xsd:element><xsd:element name="date.modify"><xsd:annotation><xsd:documentation><![CDATA[This view helper modifies the given date
+
+= Example =
+
+<code title="Inline">
+{et:date.modify(date:someDateVariable, modification:'-1 day')}
+</code>
+<output>
+{1 day before someDateVariable}
+</output>]]></xsd:documentation></xsd:annotation><xsd:complexType mixed="true"><xsd:sequence><xsd:any minOccurs="0" maxOccurs="unbounded"/></xsd:sequence><xsd:attribute type="xsd:string" name="date" use="required"><xsd:annotation><xsd:documentation><![CDATA[DateTime to modify]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="modification" use="required"><xsd:annotation><xsd:documentation><![CDATA[The modification string]]></xsd:documentation></xsd:annotation></xsd:attribute></xsd:complexType></xsd:element><xsd:element name="link.phoneNumber"><xsd:annotation><xsd:documentation><![CDATA[PhoneNumberViewHelper
 
 Converts a given phone number to the correctly linked HTML tag.
 Defaults to the country calling code of Germany (+49).
