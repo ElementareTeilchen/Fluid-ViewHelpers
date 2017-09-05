@@ -1,9 +1,9 @@
 <?php
 namespace ElementareTeilchen\Fluid\ViewHelpers\Uri;
 
-use Neos\Flow\ResourceManagement\PersistentResource;
 use Neos\FluidAdaptor\Core\ViewHelper\Exception\InvalidVariableException;
 use Neos\FluidAdaptor\ViewHelpers\Uri\ResourceViewHelper as FluidUriResourceViewHelper;
+use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 
 /**
  * A view helper for creating URIs to resources appending ``?md5=Md5OfResource`.
@@ -47,22 +47,17 @@ use Neos\FluidAdaptor\ViewHelpers\Uri\ResourceViewHelper as FluidUriResourceView
 class ResourceViewHelper extends FluidUriResourceViewHelper
 {
     /**
-     * Render the URI to the resource. The filename is used from child content.
+     * @param array $arguments
+     * @param \Closure $renderChildrenClosure
+     * @param RenderingContextInterface $renderingContext
      *
-     * @param string $path The location of the resource, can be either a path relative to the Public resource directory of the package or a resource://... URI
-     * @param string $package Target package key. If not set, the current package key will be used
-     * @param PersistentResource $resource If specified, this resource object is used instead of the path and package information
-     * @param boolean $localize Whether resource localization should be attempted or not
-     *
-     * @return string The absolute URI to the resource appended with `?md5=Md5OfResource`
+     * @return string
      *
      * @throws InvalidVariableException
-     *
-     * @api
      */
-    public function render($path = null, $package = null, PersistentResource $resource = null, $localize = true)
+    public static function renderStatic(array $arguments, \Closure $renderChildrenClosure, RenderingContextInterface $renderingContext)
     {
-        $resourceUri = parent::render($path, $package, $resource, $localize);
+        $resourceUri = parent::renderStatic($arguments, $renderChildrenClosure, $renderingContext);
 
         return $resourceUri . '?md5=' . md5_file($resourceUri);
     }
