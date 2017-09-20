@@ -28,7 +28,73 @@ bar
 </code>
 <output>
 {1 day before someDateVariable}
-</output>]]></xsd:documentation></xsd:annotation><xsd:complexType mixed="true"><xsd:sequence><xsd:any minOccurs="0" maxOccurs="unbounded"/></xsd:sequence><xsd:attribute type="xsd:string" name="date" use="required"><xsd:annotation><xsd:documentation><![CDATA[DateTime to modify]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="modification" use="required"><xsd:annotation><xsd:documentation><![CDATA[The modification string]]></xsd:documentation></xsd:annotation></xsd:attribute></xsd:complexType></xsd:element><xsd:element name="link.phoneNumber"><xsd:annotation><xsd:documentation><![CDATA[PhoneNumberViewHelper
+</output>]]></xsd:documentation></xsd:annotation><xsd:complexType mixed="true"><xsd:sequence><xsd:any minOccurs="0" maxOccurs="unbounded"/></xsd:sequence><xsd:attribute type="xsd:string" name="date" use="required"><xsd:annotation><xsd:documentation><![CDATA[DateTimeInterface to modify]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="modification" use="required"><xsd:annotation><xsd:documentation><![CDATA[The modification string]]></xsd:documentation></xsd:annotation></xsd:attribute></xsd:complexType></xsd:element><xsd:element name="format.date"><xsd:annotation><xsd:documentation><![CDATA[Formats a \DateTimeInterface object.
+
+= Examples =
+
+<code title="Defaults">
+<f:format.date>{dateObject}</f:format.date>
+</code>
+<output>
+1980-12-13
+(depending on the current date)
+</output>
+
+<code title="Custom date format">
+<f:format.date format="H:i">{dateObject}</f:format.date>
+</code>
+<output>
+01:23
+(depending on the current time)
+</output>
+
+<code title="strtotime string">
+<f:format.date format="d.m.Y - H:i:s">+1 week 2 days 4 hours 2 seconds</f:format.date>
+</code>
+<output>
+13.12.1980 - 21:03:42
+(depending on the current time, see http://www.php.net/manual/en/function.strtotime.php)
+</output>
+
+<code title="output date from unix timestamp">
+<f:format.date format="d.m.Y - H:i:s">@{someTimestamp}</f:format.date>
+</code>
+<output>
+13.12.1980 - 21:03:42
+(depending on the current time. Don't forget the "@" in front of the timestamp see http://www.php.net/manual/en/function.strtotime.php)
+</output>
+
+<code title="Inline notation">
+{f:format.date(date: dateObject)}
+</code>
+<output>
+1980-12-13
+(depending on the value of {dateObject})
+</output>
+
+<code title="Inline notation (2nd variant)">
+{dateObject -> f:format.date()}
+</code>
+<output>
+1980-12-13
+(depending on the value of {dateObject})
+</output>
+
+<code title="Inline notation, outputting date only, using current locale">
+{dateObject -> f:format.date(localeFormatType: 'date', forceLocale: true)}
+</code>
+<output>
+13.12.1980
+(depending on the value of {dateObject} and the current locale)
+</output>
+
+<code title="Inline notation with specific locale used">
+{dateObject -> f:format.date(forceLocale: 'de_DE')}
+</code>
+<output>
+13.12.1980 11:15:42
+(depending on the value of {dateObject})
+</output>]]></xsd:documentation></xsd:annotation><xsd:complexType mixed="true"><xsd:sequence><xsd:any minOccurs="0" maxOccurs="unbounded"/></xsd:sequence><xsd:attribute type="xsd:string" name="forceLocale"><xsd:annotation><xsd:documentation><![CDATA[Whether if, and what, Locale should be used. May be boolean, string or \TYPO3\Flow\I18n\Locale]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="date"><xsd:annotation><xsd:documentation><![CDATA[either an object implementing \DateTimeInterface or a string that is accepted by \DateTime constructor]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="format"><xsd:annotation><xsd:documentation><![CDATA[Format String which is taken to format the Date/Time if none of the locale options are set.]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="localeFormatType"><xsd:annotation><xsd:documentation><![CDATA[Whether to format (according to locale set in $forceLocale) date, time or datetime. Must be one of TYPO3\Flow\I18n\Cldr\Reader\DatesReader::FORMAT_TYPE_*'s constants.]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="localeFormatLength"><xsd:annotation><xsd:documentation><![CDATA[Format length if locale set in $forceLocale. Must be one of TYPO3\Flow\I18n\Cldr\Reader\DatesReader::FORMAT_LENGTH_*'s constants.]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="cldrFormat"><xsd:annotation><xsd:documentation><![CDATA[Format string in CLDR format (see http://cldr.unicode.org/translation/date-time)]]></xsd:documentation></xsd:annotation></xsd:attribute></xsd:complexType></xsd:element><xsd:element name="link.phoneNumber"><xsd:annotation><xsd:documentation><![CDATA[PhoneNumberViewHelper
 
 Converts a given phone number to the correctly linked HTML tag.
 Defaults to the country calling code of Germany (+49).

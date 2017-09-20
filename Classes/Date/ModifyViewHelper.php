@@ -21,17 +21,16 @@ class ModifyViewHelper extends AbstractViewHelper {
      * Initializes the arguments
      */
     public function __construct() {
-        $this->registerArgument('date', \DateTime::class, 'DateTime to modify', true);
+        $this->registerArgument('date', \DateTimeInterface::class, 'DateTimeInterface to modify', true);
         $this->registerArgument('modification', 'string', 'The modification string', true);
     }
 
     /**
-     * @return mixed Value at $array[$key]
+     * @return \DateTimeInterface modified date object
      */
     public function render() {
-        /** @var \DateTime $date */
-        $date = clone $this->arguments['date'];
-        $date->modify($this->arguments['modification']);
-        return $date;
+        // Can only be \DateTime or \DateTimeImmutable, so we can ignore the warning
+        /** @noinspection PhpUndefinedMethodInspection */
+        return $this->arguments['date']->modify($this->arguments['modification']);
     }
 }
