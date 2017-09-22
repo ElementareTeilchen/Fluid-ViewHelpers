@@ -19,16 +19,30 @@ bar
 </code>
 <output>
 bar
-</output>]]></xsd:documentation></xsd:annotation><xsd:complexType mixed="true"><xsd:sequence><xsd:any minOccurs="0" maxOccurs="unbounded"/></xsd:sequence><xsd:attribute type="xsd:string" name="array" use="required"><xsd:annotation><xsd:documentation><![CDATA[Array to access.]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="key" use="required"><xsd:annotation><xsd:documentation><![CDATA[Key where the array should be accessed.]]></xsd:documentation></xsd:annotation></xsd:attribute></xsd:complexType></xsd:element><xsd:element name="date.modify"><xsd:annotation><xsd:documentation><![CDATA[This view helper modifies the given date
+</output>]]></xsd:documentation></xsd:annotation><xsd:complexType mixed="true"><xsd:sequence><xsd:any minOccurs="0" maxOccurs="unbounded"/></xsd:sequence><xsd:attribute type="xsd:string" name="array" use="required"><xsd:annotation><xsd:documentation><![CDATA[Array to access.]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="key" use="required"><xsd:annotation><xsd:documentation><![CDATA[Key where the array should be accessed.]]></xsd:documentation></xsd:annotation></xsd:attribute></xsd:complexType></xsd:element><xsd:element name="date.modify"><xsd:annotation><xsd:documentation><![CDATA[This view helper modifies the given date, defaults to now
 
-= Example =
+= Examples =
+
+<code title="Default">
+<et:date.modify modification="next month" />
+</code>
+<output>
+{new \DateTimeImmutable()->modify('next month')}
+</output>
+
+<code title="String">
+<et:date.modify date="midnight" modification="next wednesday" />
+</code>
+<output>
+{new \DateTimeImmutable('midnight')->modify('next wednesday')}
+</output>
 
 <code title="Inline">
 {et:date.modify(date:someDateVariable, modification:'-1 day')}
 </code>
 <output>
-{1 day before someDateVariable}
-</output>]]></xsd:documentation></xsd:annotation><xsd:complexType mixed="true"><xsd:sequence><xsd:any minOccurs="0" maxOccurs="unbounded"/></xsd:sequence><xsd:attribute type="xsd:string" name="date" use="required"><xsd:annotation><xsd:documentation><![CDATA[DateTimeInterface to modify]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="modification" use="required"><xsd:annotation><xsd:documentation><![CDATA[The modification string]]></xsd:documentation></xsd:annotation></xsd:attribute></xsd:complexType></xsd:element><xsd:element name="format.date"><xsd:annotation><xsd:documentation><![CDATA[Formats a \DateTimeInterface object.
+{$someDateVariable->modify('-1 day')}
+</output>]]></xsd:documentation></xsd:annotation><xsd:complexType mixed="true"><xsd:sequence><xsd:any minOccurs="0" maxOccurs="unbounded"/></xsd:sequence><xsd:attribute type="xsd:string" name="date"><xsd:annotation><xsd:documentation><![CDATA[DateTimeInterface to modify]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="modification" use="required"><xsd:annotation><xsd:documentation><![CDATA[The modification string]]></xsd:documentation></xsd:annotation></xsd:attribute></xsd:complexType></xsd:element><xsd:element name="format.date"><xsd:annotation><xsd:documentation><![CDATA[Formats a \DateTimeInterface object.
 
 = Examples =
 
