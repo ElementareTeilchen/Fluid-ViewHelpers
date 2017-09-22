@@ -93,15 +93,18 @@ class DateViewHelper extends AbstractLocaleAwareViewHelper
     protected $datetimeFormatter;
 
     /**
-     * Render the supplied DateTime object as a formatted date.
+     * Render the supplied DateTimeInterface object as a formatted date.
      *
-     * @param mixed $date either an object implementing \DateTimeInterface or a string that is accepted by \DateTime constructor
+     * @param \DateTimeInterface|string $date either an object implementing \DateTimeInterface or a string that is accepted by \DateTime constructor
      * @param string $format Format String which is taken to format the Date/Time if none of the locale options are set.
-     * @param string $localeFormatType Whether to format (according to locale set in $forceLocale) date, time or datetime. Must be one of TYPO3\Flow\I18n\Cldr\Reader\DatesReader::FORMAT_TYPE_*'s constants.
-     * @param string $localeFormatLength Format length if locale set in $forceLocale. Must be one of TYPO3\Flow\I18n\Cldr\Reader\DatesReader::FORMAT_LENGTH_*'s constants.
-     * @param string $cldrFormat Format string in CLDR format (see http://cldr.unicode.org/translation/date-time)
-     * @throws ViewHelperException
+     * @param string|null $localeFormatType Whether to format (according to locale set in $forceLocale) date, time or datetime. Must be one of TYPO3\Flow\I18n\Cldr\Reader\DatesReader::FORMAT_TYPE_*'s constants.
+     * @param string|null $localeFormatLength Format length if locale set in $forceLocale. Must be one of TYPO3\Flow\I18n\Cldr\Reader\DatesReader::FORMAT_LENGTH_*'s constants.
+     * @param string|null $cldrFormat Format string in CLDR format (see http://cldr.unicode.org/translation/date-time)
+     *
      * @return string Formatted date
+     *
+     * @throws ViewHelperException
+     *
      * @api
      */
     public function render($date = null, $format = 'Y-m-d', $localeFormatType = null, $localeFormatLength = null, $cldrFormat = null)
@@ -114,11 +117,23 @@ class DateViewHelper extends AbstractLocaleAwareViewHelper
         }
 
         if (!$date instanceof \DateTimeInterface) {
-            try {
-                $date = new \DateTimeImmutable($date);
-            } catch (\Exception $exception) {
-                throw new ViewHelperException('"' . $date . '" could not be parsed by \DateTimeImmutable constructor.', 1505922902072, $exception);
+            if (is_string($date)) {
+                try {
+                    $date = new \DateTime($date);
+                } catch (\Exception $exception) {
+                    throw new ViewHelperException('"' . $date . '" could not be parsed by \DateTime constructor.', 1505922902072, $exception);
+                }
+            } else {
+                throw new ViewHelperException(
+                    'Date must be an object implementing \DateTimeInterface or of type string. It was of type ' . gettype($date) . '.',
+                    1506084145158
+                );
             }
+        } elseif ($date instanceof \DateTimeImmutable) {
+            // DatetimeFormatter only supports \DateTime :(
+            $timestamp = $date->getTimestamp();
+            $date = new \DateTime(null, $date->getTimezone());
+            $date->setTimestamp($timestamp);
         }
 
         $useLocale = $this->getLocale();
