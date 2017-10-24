@@ -19,7 +19,18 @@ bar
 </code>
 <output>
 bar
-</output>]]></xsd:documentation></xsd:annotation><xsd:complexType mixed="true"><xsd:sequence><xsd:any minOccurs="0" maxOccurs="unbounded"/></xsd:sequence><xsd:attribute type="xsd:string" name="array" use="required"><xsd:annotation><xsd:documentation><![CDATA[Array to access.]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="key" use="required"><xsd:annotation><xsd:documentation><![CDATA[Key where the array should be accessed.]]></xsd:documentation></xsd:annotation></xsd:attribute></xsd:complexType></xsd:element><xsd:element name="date.modify"><xsd:annotation><xsd:documentation><![CDATA[This view helper modifies the given date, defaults to now
+</output>]]></xsd:documentation></xsd:annotation><xsd:complexType mixed="true"><xsd:sequence><xsd:any minOccurs="0" maxOccurs="unbounded"/></xsd:sequence><xsd:attribute type="xsd:string" name="array" use="required"><xsd:annotation><xsd:documentation><![CDATA[Array to access.]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="key" use="required"><xsd:annotation><xsd:documentation><![CDATA[Key where the array should be accessed.]]></xsd:documentation></xsd:annotation></xsd:attribute></xsd:complexType></xsd:element><xsd:element name="date.isInRange"><xsd:annotation><xsd:documentation><![CDATA[This view helper checks if a date is in a range of dates
+
+= Examples =
+
+<code>
+<f:if condition="{et:date.isInRange(date:{date}, from:fromDate, until:untilDate)}">
+    date is in given range
+</f:if>
+</code>
+<output>
+"date is in given range" (if it is so)
+</output>]]></xsd:documentation></xsd:annotation><xsd:complexType mixed="true"><xsd:sequence><xsd:any minOccurs="0" maxOccurs="unbounded"/></xsd:sequence><xsd:attribute type="xsd:string" name="date"><xsd:annotation><xsd:documentation><![CDATA[DateTimeInterface to check (defaults to NOW)]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="from"><xsd:annotation><xsd:documentation><![CDATA[DateTimeInterface representing the start of the range. If NULL no check is performed.]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="until"><xsd:annotation><xsd:documentation><![CDATA[DateTimeInterface representing the end of the range. If NULL no check is performed.]]></xsd:documentation></xsd:annotation></xsd:attribute></xsd:complexType></xsd:element><xsd:element name="date.modify"><xsd:annotation><xsd:documentation><![CDATA[This view helper modifies the given date, defaults to now
 
 = Examples =
 
