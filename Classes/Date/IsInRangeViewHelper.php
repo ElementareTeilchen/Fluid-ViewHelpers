@@ -24,7 +24,7 @@ class IsInRangeViewHelper extends AbstractViewHelper {
      * Initializes the arguments
      */
     public function __construct() {
-        $this->registerArgument('date', \DateTimeInterface::class, 'DateTimeInterface to check (defaults to NOW)', false, new \DateTimeImmutable());
+        $this->registerArgument('date', \DateTimeInterface::class, 'DateTimeInterface to check (defaults to NOW)', false);
         $this->registerArgument('from', \DateTimeInterface::class, 'DateTimeInterface representing the start of the range. If NULL no check is performed.', false);
         $this->registerArgument('until', \DateTimeInterface::class, 'DateTimeInterface representing the end of the range. If NULL no check is performed.', false);
     }
