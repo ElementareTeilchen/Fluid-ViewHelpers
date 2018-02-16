@@ -67,13 +67,13 @@ class ImageViewHelper extends MediaImageViewHelper
      * Renders an HTML img tag with a thumbnail image, created from a given image.
      *
      * @param ImageInterface $image The image to be rendered as an image
-     * @param integer $width Desired width of the image
-     * @param integer $maximumWidth Desired maximum width of the image
-     * @param integer $height Desired height of the image
-     * @param integer $maximumHeight Desired maximum height of the image
-     * @param boolean $allowCropping Whether the image should be cropped if the given sizes would hurt the aspect ratio
-     * @param boolean $allowUpScaling Whether the resulting image size might exceed the size of the original image
-     * @param boolean $async Return asynchronous image URI in case the requested image does not exist already
+     * @param int $width Desired width of the image
+     * @param int $maximumWidth Desired maximum width of the image
+     * @param int $height Desired height of the image
+     * @param int $maximumHeight Desired maximum height of the image
+     * @param bool $allowCropping Whether the image should be cropped if the given sizes would hurt the aspect ratio
+     * @param bool $allowUpScaling Whether the resulting image size might exceed the size of the original image
+     * @param bool $async Return asynchronous image URI in case the requested image does not exist already
      * @param string $preset Preset used to determine image configuration
      * @param array $srcsetWidths The width of the images referenced in the srcset attribute
      * @param string $srcsetAttribute This string is prepended to the srcset attribute
