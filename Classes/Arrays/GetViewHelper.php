@@ -3,6 +3,7 @@ namespace ElementareTeilchen\Fluid\ViewHelpers\Arrays;
 
 use Neos\Flow\Annotations as Flow;
 use Neos\FluidAdaptor\Core\ViewHelper\AbstractViewHelper;
+use Neos\FluidAdaptor\Core\ViewHelper\Exception as ViewHelperException;
 
 /**
  * This view helper gets the value of the given array at the given key
@@ -31,6 +32,8 @@ class GetViewHelper extends AbstractViewHelper
 {
     /**
      * Initializes the arguments
+     *
+     * @throws ViewHelperException
      */
     public function __construct()
     {
@@ -45,8 +48,8 @@ class GetViewHelper extends AbstractViewHelper
     {
         if (empty($this->arguments['array'])) {
             return '';
-        } else {
-            return $this->arguments['array'][$this->arguments['key']];
         }
+
+        return $this->arguments['array'][$this->arguments['key']];
     }
 }

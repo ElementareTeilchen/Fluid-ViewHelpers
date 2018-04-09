@@ -47,6 +47,19 @@ use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 class ResourceViewHelper extends FluidUriResourceViewHelper
 {
     /**
+     * Render the URI to the resource. The filename is used from child content.
+     *
+     * @return string The absolute URI to the resource appended with its md5 value
+     *
+     * @throws InvalidVariableException
+     * @api
+     */
+    public function render() : string
+    {
+        return static::renderStatic($this->arguments, $this->buildRenderChildrenClosure(), $this->renderingContext);
+    }
+
+    /**
      * @param array $arguments
      * @param \Closure $renderChildrenClosure
      * @param RenderingContextInterface $renderingContext
@@ -55,10 +68,13 @@ class ResourceViewHelper extends FluidUriResourceViewHelper
      *
      * @throws InvalidVariableException
      */
-    public static function renderStatic(array $arguments, \Closure $renderChildrenClosure, RenderingContextInterface $renderingContext)
-    {
+    public static function renderStatic(
+        array $arguments,
+        \Closure $renderChildrenClosure,
+        RenderingContextInterface $renderingContext
+    ) : string {
         $resourceUri = parent::renderStatic($arguments, $renderChildrenClosure, $renderingContext);
 
-        return $resourceUri . '?md5=' . md5_file($resourceUri);
+        return $resourceUri . '?md5=' . \md5_file($resourceUri);
     }
 }

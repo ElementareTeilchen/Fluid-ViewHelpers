@@ -35,6 +35,8 @@ class ModifyViewHelper extends AbstractViewHelper
 {
     /**
      * Initializes the arguments
+     *
+     * @throws ViewHelperException
      */
     public function __construct()
     {
@@ -62,6 +64,8 @@ class ModifyViewHelper extends AbstractViewHelper
                     );
                 }
             } elseif ($date === null) {
+                /** @noinspection PhpUnhandledExceptionInspection */
+                /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
                 $date = new \DateTimeImmutable();
             } else {
                 throw new ViewHelperException(
@@ -71,6 +75,8 @@ class ModifyViewHelper extends AbstractViewHelper
                     1506085810917
                 );
             }
+        } elseif ($date instanceof \DateTime) {
+            $date = clone $date;
         }
 
         return $date->modify($this->arguments['modification']);

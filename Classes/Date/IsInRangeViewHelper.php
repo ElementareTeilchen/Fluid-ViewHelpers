@@ -23,6 +23,8 @@ class IsInRangeViewHelper extends AbstractViewHelper
 {
     /**
      * Initializes the arguments
+     *
+     * @throws ViewHelperException
      */
     public function __construct()
     {
@@ -63,6 +65,8 @@ class IsInRangeViewHelper extends AbstractViewHelper
                     );
                 }
             } elseif ($date === null) {
+                /** @noinspection PhpUnhandledExceptionInspection */
+                /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
                 $date = new \DateTimeImmutable();
             } else {
                 throw new ViewHelperException(
@@ -118,14 +122,6 @@ class IsInRangeViewHelper extends AbstractViewHelper
             }
         }
 
-        if (null !== $from && $date < $from) {
-            return false;
-        }
-
-        if (null !== $until && $until < $date) {
-            return false;
-        }
-
-        return true;
+        return ($from === null || $from <= $date) && ($until === null || $date <= $until);
     }
 }

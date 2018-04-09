@@ -4,6 +4,8 @@ namespace ElementareTeilchen\Fluid\ViewHelpers;
 use Neos\Flow\Annotations as Flow;
 use Neos\FluidAdaptor\Core\Parser\TemplateParser;
 use Neos\FluidAdaptor\Core\ViewHelper\AbstractViewHelper;
+use Neos\FluidAdaptor\Core\ViewHelper\Exception as ViewHelperException;
+use TYPO3Fluid\Fluid\Core\Parser\Exception as ParserException;
 
 /**
  * This view helper parses the given Fluid string.
@@ -34,6 +36,8 @@ class ParseViewHelper extends AbstractViewHelper
 
     /**
      * Initializes the "string" argument
+     *
+     * @throws ViewHelperException
      */
     public function __construct()
     {
@@ -42,6 +46,8 @@ class ParseViewHelper extends AbstractViewHelper
 
     /**
      * @return string parsed string
+     *
+     * @throws ParserException
      */
     public function render()
     {
