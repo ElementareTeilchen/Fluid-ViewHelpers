@@ -28,8 +28,6 @@ class PhoneNumberViewHelper extends AbstractTagBasedViewHelper
 {
     /**
      * Initializes the "string" argument
-     *
-     * @throws ViewHelperException
      */
     public function __construct()
     {

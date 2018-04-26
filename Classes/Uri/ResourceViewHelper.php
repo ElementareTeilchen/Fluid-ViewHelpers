@@ -68,7 +68,6 @@ class ResourceViewHelper extends FluidUriResourceViewHelper
      *
      * @return string The absolute URI to the resource appended with its md5 value
      *
-     * @throws InvalidVariableException
      * @api
      */
     public function render() : string
@@ -82,8 +81,6 @@ class ResourceViewHelper extends FluidUriResourceViewHelper
      * @param RenderingContextInterface $renderingContext
      *
      * @return string
-     *
-     * @throws InvalidVariableException
      */
     public static function renderStatic(
         array $arguments,

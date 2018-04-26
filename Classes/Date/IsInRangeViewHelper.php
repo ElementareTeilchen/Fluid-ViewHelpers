@@ -22,6 +22,11 @@ use Neos\FluidAdaptor\Core\ViewHelper\Exception as ViewHelperException;
 class IsInRangeViewHelper extends AbstractViewHelper
 {
     /**
+     * @var boolean
+     */
+    protected $escapeOutput = false;
+
+    /**
      * Initializes the arguments
      *
      * @throws ViewHelperException

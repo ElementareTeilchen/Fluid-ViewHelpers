@@ -7,27 +7,21 @@ use Neos\FluidAdaptor\ViewHelpers\Format\DateViewHelper as FluidDateViewHelper;
 class DateViewHelper extends FluidDateViewHelper
 {
     /**
-     * Render the supplied DateTime object as a formatted date.
-     *
-     * @param mixed $date either a \DateTime object or a string that is accepted by \DateTime constructor
-     * @param string $format Format String which is taken to format the Date/Time if none of the locale options are set.
-     * @param string $localeFormatType Whether to format (according to locale set in $forceLocale) date, time or dateTime. Must be one of Neos\Flow\I18n\Cldr\Reader\DatesReader::FORMAT_TYPE_*'s constants.
-     * @param string $localeFormatLength Format length if locale set in $forceLocale. Must be one of Neos\Flow\I18n\Cldr\Reader\DatesReader::FORMAT_LENGTH_*'s constants.
-     * @param string $cldrFormat Format string in CLDR format (see http://cldr.unicode.org/translation/date-time)
-     * @param string $timezone Timezone like "Europe/Berlin"
-     *
-     * @return string Formatted date
-     *
-     * @throws ViewHelperException
+     * @inheritDoc
      */
-    public function render(
-        $date = null,
-        $format = 'Y-m-d',
-        $localeFormatType = null,
-        $localeFormatLength = null,
-        $cldrFormat = null,
-        $timezone = null
-    ) : string {
+    public function initializeArguments()
+    {
+        parent::initializeArguments();
+
+        $this->registerArgument('timezone', 'string', 'Timezone like "Europe/Berlin"');
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function render() : string
+    {
+        $date = $this->arguments['date'];
         if ($date === null) {
             $date = $this->renderChildren();
             if ($date === null) {
@@ -47,16 +41,10 @@ class DateViewHelper extends FluidDateViewHelper
             }
         }
 
-        if ($timezone === null) {
-            $timezone = \date_default_timezone_get();
-        }
+        $timezone = $this->arguments['timezone'] ?? \date_default_timezone_get();
 
-        return parent::render(
-            $date->setTimezone(new \DateTimeZone($timezone)),
-            $format,
-            $localeFormatType,
-            $localeFormatLength,
-            $cldrFormat
-        );
+        $this->arguments['date'] = $date->setTimezone(new \DateTimeZone($timezone));
+
+        return parent::render();
     }
 }

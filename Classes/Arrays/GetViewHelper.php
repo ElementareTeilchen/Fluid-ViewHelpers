@@ -31,6 +31,11 @@ use Neos\FluidAdaptor\Core\ViewHelper\Exception as ViewHelperException;
 class GetViewHelper extends AbstractViewHelper
 {
     /**
+     * @var boolean
+     */
+    protected $escapeOutput = false;
+
+    /**
      * Initializes the arguments
      *
      * @throws ViewHelperException

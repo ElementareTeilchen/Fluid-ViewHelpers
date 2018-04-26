@@ -1,7 +1,6 @@
 <?php
 namespace ElementareTeilchen\Fluid\ViewHelpers\Date;
 
-use Neos\Flow\Annotations as Flow;
 use Neos\FluidAdaptor\Core\ViewHelper\AbstractViewHelper;
 use Neos\FluidAdaptor\Core\ViewHelper\Exception as ViewHelperException;
 
@@ -34,6 +33,12 @@ use Neos\FluidAdaptor\Core\ViewHelper\Exception as ViewHelperException;
 class ModifyViewHelper extends AbstractViewHelper
 {
     /**
+     * @var boolean
+     */
+    protected $escapeOutput = false;
+
+
+    /**
      * Initializes the arguments
      *
      * @throws ViewHelperException
@@ -43,6 +48,7 @@ class ModifyViewHelper extends AbstractViewHelper
         $this->registerArgument('date', \DateTimeInterface::class, 'DateTimeInterface to modify');
         $this->registerArgument('modification', 'string', 'The modification string', true);
     }
+
 
     /**
      * @return \DateTimeInterface modified date object

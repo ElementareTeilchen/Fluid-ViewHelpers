@@ -2,10 +2,7 @@
 namespace ElementareTeilchen\Fluid\ViewHelpers;
 
 use Neos\Flow\Annotations as Flow;
-use Neos\FluidAdaptor\Core\Parser\TemplateParser;
 use Neos\FluidAdaptor\Core\ViewHelper\AbstractViewHelper;
-use Neos\FluidAdaptor\Core\ViewHelper\Exception as ViewHelperException;
-use TYPO3Fluid\Fluid\Core\Parser\Exception as ParserException;
 
 /**
  * This view helper parses the given Fluid string.
@@ -29,15 +26,12 @@ use TYPO3Fluid\Fluid\Core\Parser\Exception as ParserException;
 class ParseViewHelper extends AbstractViewHelper
 {
     /**
-     * @var TemplateParser
-     * @Flow\Inject
+     * @var boolean
      */
-    protected $templateParser;
+    protected $escapeOutput = false;
 
     /**
      * Initializes the "string" argument
-     *
-     * @throws ViewHelperException
      */
     public function __construct()
     {
@@ -45,18 +39,22 @@ class ParseViewHelper extends AbstractViewHelper
     }
 
     /**
-     * @return string parsed string
-     *
-     * @throws ParserException
+     * @return mixed parsed string
      */
     public function render()
     {
-        if ($this->arguments['string'] === null) {
-            $string = $this->renderChildren();
-        } else {
-            $string = $this->arguments['string'];
+        $string = $this->hasArgument('string') ? $this->arguments['string'] : $this->renderChildren();
+
+        if ($string === null) {
+            return '';
         }
 
-        return $this->templateParser->parse($string)->render($this->renderingContext);
+        if (!\is_string($string)) {
+            $string = (string)$string;
+        }
+
+        $templateParser = $this->renderingContext->getTemplateParser();
+
+        return $templateParser->parse('{escapingEnabled=false}' . $string)->render($this->renderingContext);
     }
 }
