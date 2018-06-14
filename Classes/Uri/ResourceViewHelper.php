@@ -1,6 +1,7 @@
 <?php
 namespace ElementareTeilchen\Fluid\ViewHelpers\Uri;
 
+use Neos\FluidAdaptor\Core\Rendering\RenderingContext;
 use Neos\FluidAdaptor\Core\ViewHelper\Exception\InvalidVariableException;
 use Neos\FluidAdaptor\ViewHelpers\Uri\ResourceViewHelper as FluidUriResourceViewHelper;
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
@@ -47,6 +48,22 @@ use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 class ResourceViewHelper extends FluidUriResourceViewHelper
 {
     /**
+     * @inheritDoc
+     */
+    public function initializeArguments()
+    {
+        parent::initializeArguments();
+        /** @noinspection PhpUnhandledExceptionInspection */
+        $this->registerArgument(
+            'absolute',
+            'bool',
+            'Whether the Uri should be absolute or not.',
+            false,
+            true
+        );
+    }
+
+    /**
      * Render the URI to the resource. The filename is used from child content.
      *
      * @return string The absolute URI to the resource appended with its md5 value
@@ -73,8 +90,25 @@ class ResourceViewHelper extends FluidUriResourceViewHelper
         \Closure $renderChildrenClosure,
         RenderingContextInterface $renderingContext
     ) : string {
-        $resourceUri = parent::renderStatic($arguments, $renderChildrenClosure, $renderingContext);
+        /** @var RenderingContext $renderingContext */
+        $absoluteResourceUri = parent::renderStatic($arguments, $renderChildrenClosure, $renderingContext);
 
-        return $resourceUri . '?md5=' . \md5_file($resourceUri);
+        $md5 = \md5_file($absoluteResourceUri);
+
+        $resourceUri = $arguments['absolute']
+            ? $absoluteResourceUri
+            : \substr($absoluteResourceUri, \strpos($absoluteResourceUri, '/', 8))
+        ;
+
+        // $resource = $arguments['resource'] ?? null;
+        // if ($resource === null) {
+        //     if (\strpos($arguments['path'], 'resource://') === false) {
+        //         $package = $arguments['package']
+        //             ?? $renderingContext->getControllerContext()->getRequest()->getControllerPackageKey()
+        //         ;
+        //     }
+        // }
+
+        return $resourceUri . '?md5=' . $md5;
     }
 }

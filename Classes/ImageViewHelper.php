@@ -79,6 +79,7 @@ class ImageViewHelper extends MediaImageViewHelper
      * @param integer $quality Quality of the image
      * @param array $srcsetWidths The width of the images referenced in the srcset attribute
      * @param string $srcsetAttribute This string is prepended to the srcset attribute
+     * @param bool $absolute Whether generated URIs are absolute or not
      *
      * @return string an <img...> html tag
      *
@@ -96,7 +97,8 @@ class ImageViewHelper extends MediaImageViewHelper
         $preset = null,
         $quality = null,
         $srcsetWidths = [],
-        $srcsetAttribute = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw== 1w, '
+        $srcsetAttribute = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw== 1w, ',
+        $absolute = true
     ) : string {
         if ($image === null) {
             return '';
@@ -114,6 +116,12 @@ class ImageViewHelper extends MediaImageViewHelper
             $preset,
             $quality
         );
+
+        if (!$absolute) {
+            $absoluteSrc = $this->tag->getAttribute('src');
+            $this->tag->removeAttribute('src');
+            $this->tag->addAttribute('src', \substr($absoluteSrc, \strpos($absoluteSrc, '/', 8)));
+        }
 
         $widthsInSrcset = [];
         foreach (\array_merge($this->settings['widths'], $srcsetWidths, [$image->getWidth()]) as $srcsetWidth) {
@@ -147,7 +155,11 @@ class ImageViewHelper extends MediaImageViewHelper
                     ),
                     $this->controllerContext->getRequest()
                 );
-                $srcsetAttribute .= $thumbnailData['src'] . ' ' . $srcsetWidth . 'w, ';
+                $srcsetAttribute .= $absolute
+                    ? $thumbnailData['src']
+                    : \substr($thumbnailData['src'], \strpos($thumbnailData['src'], '/', 8))
+                ;
+                $srcsetAttribute .= ' ' . $srcsetWidth . 'w, ';
                 $widthsInSrcset[] = $srcsetWidth;
             }
         }
