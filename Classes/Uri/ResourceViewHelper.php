@@ -1,8 +1,8 @@
 <?php
 namespace ElementareTeilchen\Fluid\ViewHelpers\Uri;
 
+use Neos\Flow\ResourceManagement\PersistentResource;
 use Neos\FluidAdaptor\Core\Rendering\RenderingContext;
-use Neos\FluidAdaptor\Core\ViewHelper\Exception\InvalidVariableException;
 use Neos\FluidAdaptor\ViewHelpers\Uri\ResourceViewHelper as FluidUriResourceViewHelper;
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 
@@ -93,21 +93,25 @@ class ResourceViewHelper extends FluidUriResourceViewHelper
         /** @var RenderingContext $renderingContext */
         $absoluteResourceUri = parent::renderStatic($arguments, $renderChildrenClosure, $renderingContext);
 
-        $md5 = \md5_file($absoluteResourceUri);
-
         $resourceUri = $arguments['absolute']
             ? $absoluteResourceUri
             : \substr($absoluteResourceUri, \strpos($absoluteResourceUri, '/', 8))
         ;
 
-        // $resource = $arguments['resource'] ?? null;
-        // if ($resource === null) {
-        //     if (\strpos($arguments['path'], 'resource://') === false) {
-        //         $package = $arguments['package']
-        //             ?? $renderingContext->getControllerContext()->getRequest()->getControllerPackageKey()
-        //         ;
-        //     }
-        // }
+        $resource = $arguments['resource'] ?? null;
+        if ($resource === null) {
+            $path = $arguments['path'];
+            if (\strpos($path, 'resource://') === false) {
+                $package = $arguments['package']
+                    ?? $renderingContext->getControllerContext()->getRequest()->getControllerPackageKey()
+                ;
+                $path = 'resource://' . $package . '/Public/' . $path;
+            }
+            $md5 = \md5_file($path);
+        } else {
+            /** @var PersistentResource $md5 */
+            $md5 = \md5_file($resource->md5);
+        }
 
         return $resourceUri . '?md5=' . $md5;
     }
