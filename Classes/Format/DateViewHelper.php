@@ -10,20 +10,15 @@ class DateViewHelper extends FluidDateViewHelper
      * Render the supplied DateTime object as a formatted date.
      *
      * @param mixed $date either a \DateTime object or a string that is accepted by \DateTime constructor
-     * @param string $format Format String which is taken to format the Date/Time if none of the locale options are
-     *     set.
-     * @param string $localeFormatType Whether to format (according to locale set in $forceLocale) date, time or
-     *     datetime. Must be one of Neos\Flow\I18n\Cldr\Reader\DatesReader::FORMAT_TYPE_*'s constants.
-     * @param string $localeFormatLength Format length if locale set in $forceLocale. Must be one of
-     *     Neos\Flow\I18n\Cldr\Reader\DatesReader::FORMAT_LENGTH_*'s constants.
+     * @param string $format Format String which is taken to format the Date/Time if none of the locale options are set.
+     * @param string $localeFormatType Whether to format (according to locale set in $forceLocale) date, time or dateTime. Must be one of Neos\Flow\I18n\Cldr\Reader\DatesReader::FORMAT_TYPE_*'s constants.
+     * @param string $localeFormatLength Format length if locale set in $forceLocale. Must be one of Neos\Flow\I18n\Cldr\Reader\DatesReader::FORMAT_LENGTH_*'s constants.
      * @param string $cldrFormat Format string in CLDR format (see http://cldr.unicode.org/translation/date-time)
-     * @param string $timezone
+     * @param string $timezone Timezone like "Europe/Berlin"
      *
-     * @return string
+     * @return string Formatted date
      *
      * @throws ViewHelperException
-     *
-     * @api
      */
     public function render(
         $date = null,
