@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://typo3.org/ns/ElementareTeilchen/Fluid/ViewHelpers"><xsd:element name="arrays.get"><xsd:annotation><xsd:documentation><![CDATA[This view helper gets the value of the given array at the given key
+<xsd:schema
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://typo3.org/ns/ElementareTeilchen/Fluid/ViewHelpers"
+>
+    <xsd:element name="arrays.get">
+        <xsd:annotation>
+            <xsd:documentation><![CDATA[This view helper gets the value of the given array at the given key
 
 = Examples =
 
@@ -19,7 +25,28 @@ bar
 </code>
 <output>
 bar
-</output>]]></xsd:documentation></xsd:annotation><xsd:complexType mixed="true"><xsd:sequence><xsd:any minOccurs="0" maxOccurs="unbounded"/></xsd:sequence><xsd:attribute type="xsd:string" name="array" use="required"><xsd:annotation><xsd:documentation><![CDATA[Array to access.]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="key" use="required"><xsd:annotation><xsd:documentation><![CDATA[Key where the array should be accessed.]]></xsd:documentation></xsd:annotation></xsd:attribute></xsd:complexType></xsd:element><xsd:element name="date.isInRange"><xsd:annotation><xsd:documentation><![CDATA[This view helper checks if a date is in a range of dates
+</output>]]></xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType mixed="true">
+            <xsd:sequence>
+                <xsd:any minOccurs="0" maxOccurs="unbounded"/>
+            </xsd:sequence>
+            <xsd:attribute type="xsd:string" name="array" use="required">
+                <xsd:annotation>
+                    <xsd:documentation><![CDATA[Array to access.]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+            <xsd:attribute type="xsd:string" name="key" use="required">
+                <xsd:annotation>
+                    <xsd:documentation><![CDATA[Key where the array should be accessed.]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="date.isInRange">
+        <xsd:annotation>
+            <xsd:documentation><![CDATA[This view helper checks if a date is in a range of dates
 
 = Examples =
 
@@ -30,7 +57,33 @@ bar
 </code>
 <output>
 "date is in given range" (if it is so)
-</output>]]></xsd:documentation></xsd:annotation><xsd:complexType mixed="true"><xsd:sequence><xsd:any minOccurs="0" maxOccurs="unbounded"/></xsd:sequence><xsd:attribute type="xsd:string" name="date"><xsd:annotation><xsd:documentation><![CDATA[DateTimeInterface to check (defaults to NOW)]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="from"><xsd:annotation><xsd:documentation><![CDATA[DateTimeInterface representing the start of the range. If NULL no check is performed.]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="until"><xsd:annotation><xsd:documentation><![CDATA[DateTimeInterface representing the end of the range. If NULL no check is performed.]]></xsd:documentation></xsd:annotation></xsd:attribute></xsd:complexType></xsd:element><xsd:element name="date.modify"><xsd:annotation><xsd:documentation><![CDATA[This view helper modifies the given date, defaults to now
+</output>]]></xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType mixed="true">
+            <xsd:sequence>
+                <xsd:any minOccurs="0" maxOccurs="unbounded"/>
+            </xsd:sequence>
+            <xsd:attribute type="xsd:string" name="date">
+                <xsd:annotation>
+                    <xsd:documentation><![CDATA[DateTimeInterface to check (defaults to NOW)]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+            <xsd:attribute type="xsd:string" name="from">
+                <xsd:annotation>
+                    <xsd:documentation><![CDATA[DateTimeInterface representing the start of the range. If NULL no check is performed.]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+            <xsd:attribute type="xsd:string" name="until">
+                <xsd:annotation>
+                    <xsd:documentation><![CDATA[DateTimeInterface representing the end of the range. If NULL no check is performed.]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="date.modify">
+        <xsd:annotation>
+            <xsd:documentation><![CDATA[This view helper modifies the given date, defaults to now
 
 = Examples =
 
@@ -53,7 +106,80 @@ bar
 </code>
 <output>
 {$someDateVariable->modify('-1 day')}
-</output>]]></xsd:documentation></xsd:annotation><xsd:complexType mixed="true"><xsd:sequence><xsd:any minOccurs="0" maxOccurs="unbounded"/></xsd:sequence><xsd:attribute type="xsd:string" name="date"><xsd:annotation><xsd:documentation><![CDATA[DateTimeInterface to modify]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="modification" use="required"><xsd:annotation><xsd:documentation><![CDATA[The modification string]]></xsd:documentation></xsd:annotation></xsd:attribute></xsd:complexType></xsd:element><xsd:element name="format.date"><xsd:annotation><xsd:documentation><![CDATA[]]></xsd:documentation></xsd:annotation><xsd:complexType mixed="true"><xsd:sequence><xsd:any minOccurs="0" maxOccurs="unbounded"/></xsd:sequence><xsd:attribute type="xsd:string" name="forceLocale"><xsd:annotation><xsd:documentation><![CDATA[Whether if, and what, Locale should be used. May be boolean, string or \Neos\Flow\I18n\Locale]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="date"><xsd:annotation><xsd:documentation><![CDATA[either a \DateTime object or a string that is accepted by \DateTime constructor]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="format"><xsd:annotation><xsd:documentation><![CDATA[Format String which is taken to format the Date/Time if none of the locale options are set.]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="localeFormatType"><xsd:annotation><xsd:documentation><![CDATA[Whether to format (according to locale set in $forceLocale) date, time or dateTime. Must be one of Neos\Flow\I18n\Cldr\Reader\DatesReader::FORMAT_TYPE_*'s constants.]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="localeFormatLength"><xsd:annotation><xsd:documentation><![CDATA[Format length if locale set in $forceLocale. Must be one of Neos\Flow\I18n\Cldr\Reader\DatesReader::FORMAT_LENGTH_*'s constants.]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="cldrFormat"><xsd:annotation><xsd:documentation><![CDATA[Format string in CLDR format (see http://cldr.unicode.org/translation/date-time)]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="timezone"><xsd:annotation><xsd:documentation><![CDATA[Timezone like "Europe/Berlin]]></xsd:documentation></xsd:annotation></xsd:attribute></xsd:complexType></xsd:element><xsd:element name="image"><xsd:annotation><xsd:documentation><![CDATA[Renders an <img> HTML tag from a given Neos.Media image instance
+</output>]]></xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType mixed="true">
+            <xsd:sequence>
+                <xsd:any minOccurs="0" maxOccurs="unbounded"/>
+            </xsd:sequence>
+            <xsd:attribute type="xsd:string" name="date">
+                <xsd:annotation>
+                    <xsd:documentation><![CDATA[DateTimeInterface to modify]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+            <xsd:attribute type="xsd:string" name="modification" use="required">
+                <xsd:annotation>
+                    <xsd:documentation><![CDATA[The modification string]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="format.date">
+        <xsd:annotation>
+            <xsd:documentation><![CDATA[]]></xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType mixed="true">
+            <xsd:sequence>
+                <xsd:any minOccurs="0" maxOccurs="unbounded"/>
+            </xsd:sequence>
+            <xsd:attribute type="xsd:string" name="forceLocale">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        <![CDATA[Whether if, and what, Locale should be used. May be boolean, string or \Neos\Flow\I18n\Locale]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+            <xsd:attribute type="xsd:string" name="date">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        <![CDATA[either a \DateTime object or a string that is accepted by \DateTime constructor]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+            <xsd:attribute type="xsd:string" name="format">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        <![CDATA[Format String which is taken to format the Date/Time if none of the locale options are set.]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+            <xsd:attribute type="xsd:string" name="localeFormatType">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        <![CDATA[Whether to format (according to locale set in $forceLocale) date, time or dateTime. Must be one of Neos\Flow\I18n\Cldr\Reader\DatesReader::FORMAT_TYPE_*'s constants.]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+            <xsd:attribute type="xsd:string" name="localeFormatLength">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        <![CDATA[Format length if locale set in $forceLocale. Must be one of Neos\Flow\I18n\Cldr\Reader\DatesReader::FORMAT_LENGTH_*'s constants.]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+            <xsd:attribute type="xsd:string" name="cldrFormat">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        <![CDATA[Format string in CLDR format (see http://cldr.unicode.org/translation/date-time)]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+            <xsd:attribute type="xsd:string" name="timezone">
+                <xsd:annotation>
+                    <xsd:documentation><![CDATA[Timezone like "Europe/Berlin]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="image">
+        <xsd:annotation>
+            <xsd:documentation><![CDATA[Renders an <img> HTML tag from a given Neos.Media image instance
 
 = Examples =
 
@@ -98,7 +224,163 @@ bar
 <output>
 (depending on the image; scaled up or down to a width 5000 pixels, keeping aspect ratio)
 <img src="_Resources/Persistent/b29[...]95d.jpeg" width="80" height="80" alt="sample" />
-</output>]]></xsd:documentation></xsd:annotation><xsd:complexType mixed="true"><xsd:sequence><xsd:any minOccurs="0" maxOccurs="unbounded"/></xsd:sequence><xsd:attribute type="xsd:string" name="additionalAttributes"><xsd:annotation><xsd:documentation><![CDATA[Additional tag attributes. They will be added directly to the resulting HTML tag.]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="data"><xsd:annotation><xsd:documentation><![CDATA[Additional data-* attributes. They will each be added with a "data-" prefix.]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="image"><xsd:annotation><xsd:documentation><![CDATA[The image to be rendered as an image]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="width"><xsd:annotation><xsd:documentation><![CDATA[Desired width of the image]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="maximumWidth"><xsd:annotation><xsd:documentation><![CDATA[Desired maximum width of the image]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="height"><xsd:annotation><xsd:documentation><![CDATA[Desired height of the image]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="maximumHeight"><xsd:annotation><xsd:documentation><![CDATA[Desired maximum height of the image]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="allowCropping"><xsd:annotation><xsd:documentation><![CDATA[Whether the image should be cropped if the given sizes would hurt the aspect ratio]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="allowUpScaling"><xsd:annotation><xsd:documentation><![CDATA[Whether the resulting image size might exceed the size of the original image]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="async"><xsd:annotation><xsd:documentation><![CDATA[Return asynchronous image URI in case the requested image does not exist already]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="preset"><xsd:annotation><xsd:documentation><![CDATA[Preset used to determine image configuration]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="quality"><xsd:annotation><xsd:documentation><![CDATA[Quality of the image]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="srcsetWidths"><xsd:annotation><xsd:documentation><![CDATA[The width of the images referenced in the srcset attribute]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="srcsetAttribute"><xsd:annotation><xsd:documentation><![CDATA[This string is prepended to the srcset attribute]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="absolute"><xsd:annotation><xsd:documentation><![CDATA[Whether generated URIs are absolute or not]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="class"><xsd:annotation><xsd:documentation><![CDATA[CSS class(es) for this element]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="dir"><xsd:annotation><xsd:documentation><![CDATA[Text direction for this HTML element. Allowed strings: "ltr" (left to right), "rtl" (right to left)]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="id"><xsd:annotation><xsd:documentation><![CDATA[Unique (in this file) identifier for this HTML element.]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="lang"><xsd:annotation><xsd:documentation><![CDATA[Language for this element. Use short names specified in RFC 1766]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="style"><xsd:annotation><xsd:documentation><![CDATA[Individual CSS styles for this element]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="title"><xsd:annotation><xsd:documentation><![CDATA[Tooltip text of element]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="accesskey"><xsd:annotation><xsd:documentation><![CDATA[Keyboard shortcut to access this element]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="tabindex"><xsd:annotation><xsd:documentation><![CDATA[Specifies the tab order of this element]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="onclick"><xsd:annotation><xsd:documentation><![CDATA[JavaScript evaluated for the onclick event]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="alt" use="required"><xsd:annotation><xsd:documentation><![CDATA[Specifies an alternate text for an image]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="ismap"><xsd:annotation><xsd:documentation><![CDATA[Specifies an image as a server-side image-map. Rarely used. Look at usemap instead]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="usemap"><xsd:annotation><xsd:documentation><![CDATA[Specifies an image as a client-side image-map]]></xsd:documentation></xsd:annotation></xsd:attribute></xsd:complexType></xsd:element><xsd:element name="link.phoneNumber"><xsd:annotation><xsd:documentation><![CDATA[PhoneNumberViewHelper
+</output>]]></xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType mixed="true">
+            <xsd:sequence>
+                <xsd:any minOccurs="0" maxOccurs="unbounded"/>
+            </xsd:sequence>
+            <xsd:attribute type="xsd:string" name="additionalAttributes">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        <![CDATA[Additional tag attributes. They will be added directly to the resulting HTML tag.]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+            <xsd:attribute type="xsd:string" name="data">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        <![CDATA[Additional data-* attributes. They will each be added with a "data-" prefix.]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+            <xsd:attribute type="xsd:string" name="image">
+                <xsd:annotation>
+                    <xsd:documentation><![CDATA[The image to be rendered as an image]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+            <xsd:attribute type="xsd:string" name="width">
+                <xsd:annotation>
+                    <xsd:documentation><![CDATA[Desired width of the image]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+            <xsd:attribute type="xsd:string" name="maximumWidth">
+                <xsd:annotation>
+                    <xsd:documentation><![CDATA[Desired maximum width of the image]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+            <xsd:attribute type="xsd:string" name="height">
+                <xsd:annotation>
+                    <xsd:documentation><![CDATA[Desired height of the image]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+            <xsd:attribute type="xsd:string" name="maximumHeight">
+                <xsd:annotation>
+                    <xsd:documentation><![CDATA[Desired maximum height of the image]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+            <xsd:attribute type="xsd:string" name="allowCropping">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        <![CDATA[Whether the image should be cropped if the given sizes would hurt the aspect ratio]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+            <xsd:attribute type="xsd:string" name="allowUpScaling">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        <![CDATA[Whether the resulting image size might exceed the size of the original image]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+            <xsd:attribute type="xsd:string" name="async">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        <![CDATA[Return asynchronous image URI in case the requested image does not exist already]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+            <xsd:attribute type="xsd:string" name="preset">
+                <xsd:annotation>
+                    <xsd:documentation><![CDATA[Preset used to determine image configuration]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+            <xsd:attribute type="xsd:string" name="quality">
+                <xsd:annotation>
+                    <xsd:documentation><![CDATA[Quality of the image]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+            <xsd:attribute type="xsd:string" name="srcsetWidths">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        <![CDATA[The width of the images referenced in the srcset attribute]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+            <xsd:attribute type="xsd:string" name="srcsetAttribute">
+                <xsd:annotation>
+                    <xsd:documentation><![CDATA[This string is prepended to the srcset attribute]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+            <xsd:attribute type="xsd:string" name="absolute">
+                <xsd:annotation>
+                    <xsd:documentation><![CDATA[Whether generated URIs are absolute or not]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+            <xsd:attribute type="xsd:string" name="class">
+                <xsd:annotation>
+                    <xsd:documentation><![CDATA[CSS class(es) for this element]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+            <xsd:attribute type="xsd:string" name="dir">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        <![CDATA[Text direction for this HTML element. Allowed strings: "ltr" (left to right), "rtl" (right to left)]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+            <xsd:attribute type="xsd:string" name="id">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        <![CDATA[Unique (in this file) identifier for this HTML element.]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+            <xsd:attribute type="xsd:string" name="lang">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        <![CDATA[Language for this element. Use short names specified in RFC 1766]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+            <xsd:attribute type="xsd:string" name="style">
+                <xsd:annotation>
+                    <xsd:documentation><![CDATA[Individual CSS styles for this element]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+            <xsd:attribute type="xsd:string" name="title">
+                <xsd:annotation>
+                    <xsd:documentation><![CDATA[Tooltip text of element]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+            <xsd:attribute type="xsd:string" name="accesskey">
+                <xsd:annotation>
+                    <xsd:documentation><![CDATA[Keyboard shortcut to access this element]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+            <xsd:attribute type="xsd:string" name="tabindex">
+                <xsd:annotation>
+                    <xsd:documentation><![CDATA[Specifies the tab order of this element]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+            <xsd:attribute type="xsd:string" name="onclick">
+                <xsd:annotation>
+                    <xsd:documentation><![CDATA[JavaScript evaluated for the onclick event]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+            <xsd:attribute type="xsd:string" name="alt" use="required">
+                <xsd:annotation>
+                    <xsd:documentation><![CDATA[Specifies an alternate text for an image]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+            <xsd:attribute type="xsd:string" name="ismap">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        <![CDATA[Specifies an image as a server-side image-map. Rarely used. Look at usemap instead]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+            <xsd:attribute type="xsd:string" name="usemap">
+                <xsd:annotation>
+                    <xsd:documentation><![CDATA[Specifies an image as a client-side image-map]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="link.phoneNumber">
+        <xsd:annotation>
+            <xsd:documentation><![CDATA[PhoneNumberViewHelper
 
 Converts a given phone number to the correctly linked HTML tag.
 Defaults to the country calling code of Germany (+49).
@@ -115,7 +397,94 @@ or
 
 <output>
 <a href='tel:+491234'>call me</a>
-</output>]]></xsd:documentation></xsd:annotation><xsd:complexType mixed="true"><xsd:sequence><xsd:any minOccurs="0" maxOccurs="unbounded"/></xsd:sequence><xsd:attribute type="xsd:string" name="additionalAttributes"><xsd:annotation><xsd:documentation><![CDATA[Additional tag attributes. They will be added directly to the resulting HTML tag.]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="data"><xsd:annotation><xsd:documentation><![CDATA[Additional data-* attributes. They will each be added with a "data-" prefix.]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="class"><xsd:annotation><xsd:documentation><![CDATA[CSS class(es) for this element]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="dir"><xsd:annotation><xsd:documentation><![CDATA[Text direction for this HTML element. Allowed strings: "ltr" (left to right), "rtl" (right to left)]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="id"><xsd:annotation><xsd:documentation><![CDATA[Unique (in this file) identifier for this HTML element.]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="lang"><xsd:annotation><xsd:documentation><![CDATA[Language for this element. Use short names specified in RFC 1766]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="style"><xsd:annotation><xsd:documentation><![CDATA[Individual CSS styles for this element]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="title"><xsd:annotation><xsd:documentation><![CDATA[Tooltip text of element]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="accesskey"><xsd:annotation><xsd:documentation><![CDATA[Keyboard shortcut to access this element]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="tabindex"><xsd:annotation><xsd:documentation><![CDATA[Specifies the tab order of this element]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="onclick"><xsd:annotation><xsd:documentation><![CDATA[JavaScript evaluated for the onclick event]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="phoneNumber" use="required"><xsd:annotation><xsd:documentation><![CDATA[The phone number to link]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="countryCode"><xsd:annotation><xsd:documentation><![CDATA[The country calling code to use (defaults to "49")]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="content"><xsd:annotation><xsd:documentation><![CDATA[The content of the resulting tag]]></xsd:documentation></xsd:annotation></xsd:attribute></xsd:complexType></xsd:element><xsd:element name="parse"><xsd:annotation><xsd:documentation><![CDATA[This view helper parses the given Fluid string.
+</output>]]></xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType mixed="true">
+            <xsd:sequence>
+                <xsd:any minOccurs="0" maxOccurs="unbounded"/>
+            </xsd:sequence>
+            <xsd:attribute type="xsd:string" name="additionalAttributes">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        <![CDATA[Additional tag attributes. They will be added directly to the resulting HTML tag.]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+            <xsd:attribute type="xsd:string" name="data">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        <![CDATA[Additional data-* attributes. They will each be added with a "data-" prefix.]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+            <xsd:attribute type="xsd:string" name="class">
+                <xsd:annotation>
+                    <xsd:documentation><![CDATA[CSS class(es) for this element]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+            <xsd:attribute type="xsd:string" name="dir">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        <![CDATA[Text direction for this HTML element. Allowed strings: "ltr" (left to right), "rtl" (right to left)]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+            <xsd:attribute type="xsd:string" name="id">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        <![CDATA[Unique (in this file) identifier for this HTML element.]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+            <xsd:attribute type="xsd:string" name="lang">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        <![CDATA[Language for this element. Use short names specified in RFC 1766]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+            <xsd:attribute type="xsd:string" name="style">
+                <xsd:annotation>
+                    <xsd:documentation><![CDATA[Individual CSS styles for this element]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+            <xsd:attribute type="xsd:string" name="title">
+                <xsd:annotation>
+                    <xsd:documentation><![CDATA[Tooltip text of element]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+            <xsd:attribute type="xsd:string" name="accesskey">
+                <xsd:annotation>
+                    <xsd:documentation><![CDATA[Keyboard shortcut to access this element]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+            <xsd:attribute type="xsd:string" name="tabindex">
+                <xsd:annotation>
+                    <xsd:documentation><![CDATA[Specifies the tab order of this element]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+            <xsd:attribute type="xsd:string" name="onclick">
+                <xsd:annotation>
+                    <xsd:documentation><![CDATA[JavaScript evaluated for the onclick event]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+            <xsd:attribute type="xsd:string" name="phoneNumber" use="required">
+                <xsd:annotation>
+                    <xsd:documentation><![CDATA[The phone number to link]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+            <xsd:attribute type="xsd:string" name="countryCode">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        <![CDATA[The country calling code to use (defaults to "49")]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+            <xsd:attribute type="xsd:string" name="content">
+                <xsd:annotation>
+                    <xsd:documentation><![CDATA[The content of the resulting tag]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="parse">
+        <xsd:annotation>
+            <xsd:documentation><![CDATA[This view helper parses the given Fluid string.
 
 = Examples =
 
@@ -131,7 +500,23 @@ text containing a value variable
 </code>
 <output>
 text containing a value variable
-</output>]]></xsd:documentation></xsd:annotation><xsd:complexType mixed="true"><xsd:sequence><xsd:any minOccurs="0" maxOccurs="unbounded"/></xsd:sequence><xsd:attribute type="xsd:string" name="string"><xsd:annotation><xsd:documentation><![CDATA[String to parse.]]></xsd:documentation></xsd:annotation></xsd:attribute></xsd:complexType></xsd:element><xsd:element name="uri.resource"><xsd:annotation><xsd:documentation><![CDATA[A view helper for creating URIs to resources appending ``?md5=Md5OfResource`.
+</output>]]></xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType mixed="true">
+            <xsd:sequence>
+                <xsd:any minOccurs="0" maxOccurs="unbounded"/>
+            </xsd:sequence>
+            <xsd:attribute type="xsd:string" name="string">
+                <xsd:annotation>
+                    <xsd:documentation><![CDATA[String to parse.]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="uri.resource">
+        <xsd:annotation>
+            <xsd:documentation><![CDATA[A view helper for creating URIs to resources appending ``?md5=Md5OfResource`.
 
 = Examples =
 
@@ -165,7 +550,47 @@ http://yourdomain.tld/_Resources/Static/DifferentPackage/gfx/SomeImage.png?md5=M
 <output>
 <img src="http://yourdomain.tld/_Resources/Persistent/69e73da3ce0ad08c717b7b9f1c759182d6650944.jpg?md5=Md5OfResource" />
 (depending on your resource object)
-</output>]]></xsd:documentation></xsd:annotation><xsd:complexType mixed="true"><xsd:sequence><xsd:any minOccurs="0" maxOccurs="unbounded"/></xsd:sequence><xsd:attribute type="xsd:string" name="path"><xsd:annotation><xsd:documentation><![CDATA[Location of the resource, can be either a path relative to the Public resource directory of the package or a resource://... URI]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="package"><xsd:annotation><xsd:documentation><![CDATA[Target package key. If not set, the current package key will be used]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="resource"><xsd:annotation><xsd:documentation><![CDATA[If specified, this resource object is used instead of the path and package information]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="localize"><xsd:annotation><xsd:documentation><![CDATA[Whether resource localization should be attempted or not.]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="absolute"><xsd:annotation><xsd:documentation><![CDATA[Whether the Uri should be absolute or not.]]></xsd:documentation></xsd:annotation></xsd:attribute></xsd:complexType></xsd:element><xsd:element name="renderPartial"><xsd:annotation><xsd:documentation><![CDATA[A ViewHelper to render a specified section in a partial (defaulting to "Main") or a delegate ParsedTemplateInterface
+</output>]]></xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType mixed="true">
+            <xsd:sequence>
+                <xsd:any minOccurs="0" maxOccurs="unbounded"/>
+            </xsd:sequence>
+            <xsd:attribute type="xsd:string" name="path">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        <![CDATA[Location of the resource, can be either a path relative to the Public resource directory of the package or a resource://... URI]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+            <xsd:attribute type="xsd:string" name="package">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        <![CDATA[Target package key. If not set, the current package key will be used]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+            <xsd:attribute type="xsd:string" name="resource">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        <![CDATA[If specified, this resource object is used instead of the path and package information]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+            <xsd:attribute type="xsd:string" name="localize">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        <![CDATA[Whether resource localization should be attempted or not.]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+            <xsd:attribute type="xsd:string" name="absolute">
+                <xsd:annotation>
+                    <xsd:documentation><![CDATA[Whether the Uri should be absolute or not.]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="renderPartial">
+        <xsd:annotation>
+            <xsd:documentation><![CDATA[A ViewHelper to render a specified section in a partial (defaulting to "Main") or a delegate ParsedTemplateInterface
 implementation.
 
 If the partial contains long Fluid tags, PHPs PCRE JIT compiler must be disabled via the "disableJIT" argument.
@@ -179,4 +604,64 @@ If the partial contains long Fluid tags, PHPs PCRE JIT compiler must be disabled
 <output>
 The content of the section "Main" in partial "SomePartial".
 The content of the variable {someVariable} will be available in the partial as {foo}
-</output>]]></xsd:documentation></xsd:annotation><xsd:complexType mixed="true"><xsd:sequence><xsd:any minOccurs="0" maxOccurs="unbounded"/></xsd:sequence><xsd:attribute type="xsd:string" name="section" default="Main"><xsd:annotation><xsd:documentation><![CDATA[Section in partial to render]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="partial" use="required"><xsd:annotation><xsd:documentation><![CDATA[Partial to render, with or without section]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="delegate"><xsd:annotation><xsd:documentation><![CDATA[Optional PHP class name of a permanent, included-in-app ParsedTemplateInterface implementation to override partial/section]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:anySimpleType" name="renderable"><xsd:annotation><xsd:documentation><![CDATA[Instance of a RenderableInterface implementation to be rendered]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:anySimpleType" name="arguments" default="array (&#10;)"><xsd:annotation><xsd:documentation><![CDATA[Array of variables to be transferred. Use {_all} for all variables]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:boolean" name="optional" default="false"><xsd:annotation><xsd:documentation><![CDATA[If TRUE, considers the *section* optional. Partial never is.]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:anySimpleType" name="default"><xsd:annotation><xsd:documentation><![CDATA[Value (usually string) to be displayed if the section or partial does not exist]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:string" name="contentAs"><xsd:annotation><xsd:documentation><![CDATA[If used, renders the child content and adds it as a template variable with this name for use in the partial/section]]></xsd:documentation></xsd:annotation></xsd:attribute><xsd:attribute type="xsd:boolean" name="disableJIT" default="false"><xsd:annotation><xsd:documentation><![CDATA[If TRUE, PCRE JIT compiler will be disabled to allow long Fluid tags. See https://bugs.php.net/bug.php?id=70110 for bug report.]]></xsd:documentation></xsd:annotation></xsd:attribute></xsd:complexType></xsd:element></xsd:schema>
+</output>]]></xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType mixed="true">
+            <xsd:sequence>
+                <xsd:any minOccurs="0" maxOccurs="unbounded"/>
+            </xsd:sequence>
+            <xsd:attribute type="xsd:string" name="section" default="Main">
+                <xsd:annotation>
+                    <xsd:documentation><![CDATA[Section in partial to render]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+            <xsd:attribute type="xsd:string" name="partial" use="required">
+                <xsd:annotation>
+                    <xsd:documentation><![CDATA[Partial to render, with or without section]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+            <xsd:attribute type="xsd:string" name="delegate">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        <![CDATA[Optional PHP class name of a permanent, included-in-app ParsedTemplateInterface implementation to override partial/section]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+            <xsd:attribute type="xsd:anySimpleType" name="renderable">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        <![CDATA[Instance of a RenderableInterface implementation to be rendered]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+            <xsd:attribute type="xsd:anySimpleType" name="arguments" default="array (&#10;)">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        <![CDATA[Array of variables to be transferred. Use {_all} for all variables]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+            <xsd:attribute type="xsd:boolean" name="optional" default="false">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        <![CDATA[If TRUE, considers the *section* optional. Partial never is.]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+            <xsd:attribute type="xsd:anySimpleType" name="default">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        <![CDATA[Value (usually string) to be displayed if the section or partial does not exist]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+            <xsd:attribute type="xsd:string" name="contentAs">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        <![CDATA[If used, renders the child content and adds it as a template variable with this name for use in the partial/section]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+            <xsd:attribute type="xsd:boolean" name="disableJIT" default="false">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        <![CDATA[If TRUE, PCRE JIT compiler will be disabled to allow long Fluid tags. See https://bugs.php.net/bug.php?id=70110 for bug report.]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>
